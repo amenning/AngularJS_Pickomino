@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pickominoGame">
+	<head>
+		<meta charset="utf-8" />
+		<title>Angular Pickomino</title>
+		<link rel="stylesheet" type="text/css" href="assests/css/board.css">
+		<script src="node_modules/angular/angular.js"></script>
+		<script src="app/app.module.js"></script>
+	</head>
+	<body>
+		<div>
+			<div class = 'container inset'>
+				<div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
+					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues">
+						{{worm}}
+					</div>
+				</div>
+				<br/>
+				<div class = 'activedice inset' ng-controller="ActiveDiceController as activeDice">
+					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index">
+						{{dice.value}}
+					</div>
+				</div>
+				<br/>
+				<div class = 'frozendice inset' ng-controller="FrozenDiceController as frozenDice">
+					<div class = 'dice inset' ng-repeat="dice in frozenDice.diceValues track by $index">
+						{{dice.value}}
+					</div>
+				</div>
+				<br/>
+				<div class = 'playeroptions outset' ng-controller="RollDiceController as action">
+					<button class = 'buttons inset' ng-click="action.rollDice()">
+						Roll
+					</button>
+					<button class = 'buttons inset' ng-click="action.freezeDice(action.activeDice.pop())">
+						Freeze
+					</button>
+				</div>
+				<br/>
+				<div class = 'foot inset'>
+					<span class = 'logger'>Player's Worms</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
