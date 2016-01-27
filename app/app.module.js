@@ -51,8 +51,8 @@
 	
 	.factory("ActiveDiceFilter", ['$filter', function ActiveDiceFilterFactory($filter){
 		return {
-			count: function(value){
-				var found = $filter('filter')(activeDiceValues, {value: value}, true);
+			count: function(value, activeDiceArray){
+				var found = $filter('filter')(activeDiceArray, {value: value}, true);
 				return found.length;				
 			}
 		}
@@ -76,7 +76,7 @@
 		this.freezeDice = function(diceValue, activeDiceArrayCtrl){
 			if(CheckValidDiceFreeze.validate(diceValue)){
 				diceImage = SetDiceImage.imagify(diceValue);
-				count = ActiveDiceFilter.count(diceValue);
+				count = ActiveDiceFilter.count(diceValue, activeDiceArrayCtrl.diceValues);
 				for(var x=0; x<count; x++){
 					this.frozenDice.push({value: diceValue, image: diceImage});	
 				}
