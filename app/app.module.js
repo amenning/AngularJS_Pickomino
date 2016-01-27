@@ -13,8 +13,43 @@
 		this.diceValues = frozenDiceValues;
 	})
 	
+	.factory("SetDiceImage", function SetDiceImageFactory(){
+		return {
+			imagify: function(diceValue){
+				switch(diceValue){
+					case 1:
+						return 'assests/img/DiceFaceOne.png';
+						break;
+					case 2:
+						return 'assests/img/DiceFaceTwo.png';
+						break;
+					case 3:
+						return 'assests/img/DiceFaceThree.png';
+						break;
+					case 4:
+						return 'assests/img/DiceFaceFour.png';
+						break;
+					case 5:
+						return 'assests/img/DiceFaceFive.png';
+						break;
+					case 6:
+						return 'assests/img/OneWormTile.png';
+						break;
+				};
+			}
+		}
+	})
 	
-	.controller("RollDiceController", function(){
+	.factory("CheckValidDiceFreeze", ['$filter', function CheckValidDiceFreezeFactory($filter){
+		return {
+			validate: function(freezeValue){
+				var found = $filter('filter')(frozenDiceValues, {value: freezeValue}, true);
+				return (found.length===0);				
+			}
+		}
+	}])
+	
+	.controller("RollDiceController", function(SetDiceImage, CheckValidDiceFreeze){
 		this.activeDice = activeDiceValues;
 		this.frozenDice = frozenDiceValues;
 		
@@ -23,54 +58,25 @@
 				// Returns a random integer between min (included) and max (excluded)
 				// Using Math.round() will give you a non-uniform distribution!
 				this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
-				switch(this.activeDice[x].value){
-					case 1:
-						this.activeDice[x].image = 'assests/img/DiceFaceOne.png';
-						break;
-					case 2:
-						this.activeDice[x].image = 'assests/img/DiceFaceTwo.png';
-						break;
-					case 3:
-						this.activeDice[x].image = 'assests/img/DiceFaceThree.png';
-						break;
-					case 4:
-						this.activeDice[x].image = 'assests/img/DiceFaceFour.png';
-						break;
-					case 5:
-						this.activeDice[x].image = 'assests/img/DiceFaceFive.png';
-						break;
-					case 6:
-						this.activeDice[x].image = 'assests/img/OneWormTile.png';
-						break;
-				};
+				this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
 			}
 		};
 		
+		this.rollDice();
+		
 		this.freezeDice = function(diceValue){
-			switch(diceValue){
-					case 1:
-						diceImage = 'assests/img/DiceFaceOne.png';
-						break;
-					case 2:
-						diceImage = 'assests/img/DiceFaceTwo.png';
-						break;
-					case 3:
-						diceImage = 'assests/img/DiceFaceThree.png';
-						break;
-					case 4:
-						diceImage = 'assests/img/DiceFaceFour.png';
-						break;
-					case 5:
-						diceImage = 'assests/img/DiceFaceFive.png';
-						break;
-					case 6:
-						diceImage = 'assests/img/OneWormTile.png';
-						break;
-				};
-			this.frozenDice.push({value: diceValue, image: diceImage});
+			if(CheckValidDiceFreeze.validate(diceValue)){
+				diceImage = SetDiceImage.imagify(diceValue);
+				this.frozenDice.push({value: diceValue, image: diceImage});
+			}else{
+				playerNotification = 'You already froze that number!';
+				console.log(playerNotification);
+			}
 		}
 	});	
 
+	var playerNotification = '';
+	
 	var grillWormValues = [
 		{
 			value: 21,
@@ -169,10 +175,6 @@
 		},
 		{
 			value: 8,
-			image: 'assests/img/DiceFaceOne.png'
-		},
-		{
-			value: 1,
 			image: 'assests/img/DiceFaceOne.png'
 		}		
 	];
