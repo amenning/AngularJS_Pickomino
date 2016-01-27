@@ -73,17 +73,16 @@
 		
 		this.rollDice();
 		
-		this.freezeDice = function(diceValue){
+		this.freezeDice = function(diceValue, activeDiceArrayCtrl){
 			if(CheckValidDiceFreeze.validate(diceValue)){
 				diceImage = SetDiceImage.imagify(diceValue);
 				count = ActiveDiceFilter.count(diceValue);
 				for(var x=0; x<count; x++){
 					this.frozenDice.push({value: diceValue, image: diceImage});	
 				}
-//				holding = this.activeDice.filter(function (el) {
-//					return el.value !== diceValue;
-//				});
-//				console.log(activeDiceValues);
+				activeDiceArrayCtrl.diceValues = activeDiceArrayCtrl.diceValues.filter(function (el) {
+					return el.value !== diceValue;
+				});
 			}else{
 				playerNotification = 'You already froze that number!';
 				console.log(playerNotification);
