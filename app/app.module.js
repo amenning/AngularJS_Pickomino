@@ -23,77 +23,164 @@
 				// Returns a random integer between min (included) and max (excluded)
 				// Using Math.round() will give you a non-uniform distribution!
 				this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
+				switch(this.activeDice[x].value){
+					case 1:
+						this.activeDice[x].image = 'assests/img/DiceFaceOne.png';
+						break;
+					case 2:
+						this.activeDice[x].image = 'assests/img/DiceFaceTwo.png';
+						break;
+					case 3:
+						this.activeDice[x].image = 'assests/img/DiceFaceThree.png';
+						break;
+					case 4:
+						this.activeDice[x].image = 'assests/img/DiceFaceFour.png';
+						break;
+					case 5:
+						this.activeDice[x].image = 'assests/img/DiceFaceFive.png';
+						break;
+					case 6:
+						this.activeDice[x].image = 'assests/img/OneWormTile.png';
+						break;
+				};
 			}
 		};
 		
 		this.freezeDice = function(diceValue){
-			console.log(diceValue);
-			this.frozenDice.push(diceValue);
+			switch(diceValue){
+					case 1:
+						diceImage = 'assests/img/DiceFaceOne.png';
+						break;
+					case 2:
+						diceImage = 'assests/img/DiceFaceTwo.png';
+						break;
+					case 3:
+						diceImage = 'assests/img/DiceFaceThree.png';
+						break;
+					case 4:
+						diceImage = 'assests/img/DiceFaceFour.png';
+						break;
+					case 5:
+						diceImage = 'assests/img/DiceFaceFive.png';
+						break;
+					case 6:
+						diceImage = 'assests/img/OneWormTile.png';
+						break;
+				};
+			this.frozenDice.push({value: diceValue, image: diceImage});
 		}
 	});	
 
 	var grillWormValues = [
-		21,
-		22,
-		23,
-		24,
-		25,
-		26,
-		27,
-		28,
-		29,
-		30,
-		31,
-		32,
-		33,
-		34,
-		35,
-		36
+		{
+			value: 21,
+			image: 'assests/img/OneWormTile.png'
+		},
+		{
+			value: 22,
+			image: 'assests/img/OneWormTile.png'
+		},
+		{
+			value: 23,
+			image: 'assests/img/OneWormTile.png'
+		},
+		{
+			value: 24,
+			image: 'assests/img/OneWormTile.png'
+		},
+		{
+			value: 25,
+			image: 'assests/img/TwoWormTile.png'
+		},
+		{
+			value: 26,
+			image: 'assests/img/TwoWormTile.png'
+		},
+		{
+			value: 27,
+			image: 'assests/img/TwoWormTile.png'
+		},
+		{
+			value: 28,
+			image: 'assests/img/TwoWormTile.png'
+		},
+		{
+			value: 29,
+			image: 'assests/img/ThreeWormTile.png'
+		},
+		{
+			value: 30,
+			image: 'assests/img/ThreeWormTile.png'
+		},
+		{
+			value: 31,
+			image: 'assests/img/ThreeWormTile.png'
+		},
+		{
+			value: 32,
+			image: 'assests/img/ThreeWormTile.png'
+		},
+		{
+			value: 33,
+			image: 'assests/img/FourWormTile.png'
+		},
+		{
+			value: 34,
+			image: 'assests/img/FourWormTile.png'
+		},
+		{
+			value: 35,
+			image: 'assests/img/FourWormTile.png'
+		},
+		{
+			value: 36,
+			image: 'assests/img/FourWormTile.png'
+		}
 	];
 	
 	var activeDiceValues = [
 		{
 			value: 1,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 2,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 3,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 4,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 5,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 6,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 7,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 8,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		},
 		{
 			value: 1,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		}		
 	];
 	
 	var frozenDiceValues = [
 		{
 			value: 1,
-			image: '../assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png'
 		}		
 	];	
 })();

@@ -8,27 +8,28 @@
 		<script src="app/app.module.js"></script>
 	</head>
 	<body>
-		<div>
+		<div ng-controller="RollDiceController as action">
 			<div class = 'container inset'>
 				<div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
 					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues">
-						{{worm}}
+						{{worm.value}}
+						<img ng-src="{{worm.image}}" />
 					</div>
 				</div>
 				<br/>
 				<div class = 'activedice inset' ng-controller="ActiveDiceController as activeDice">
-					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index">
-						{{dice.value}}
+					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)">
+						<img ng-src="{{dice.image}}" />
 					</div>
 				</div>
 				<br/>
 				<div class = 'frozendice inset' ng-controller="FrozenDiceController as frozenDice">
 					<div class = 'dice inset' ng-repeat="dice in frozenDice.diceValues track by $index">
-						{{dice.value}}
+						<img ng-src="{{dice.image}}" />
 					</div>
 				</div>
 				<br/>
-				<div class = 'playeroptions outset' ng-controller="RollDiceController as action">
+				<div class = 'playeroptions outset'>
 					<button class = 'buttons inset' ng-click="action.rollDice()">
 						Roll
 					</button>
