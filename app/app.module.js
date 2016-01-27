@@ -159,6 +159,8 @@
 		}
 	];
 	
+	var frozenDiceValues = [ ];	
+	
 	var activeDiceValues = [
 		{
 			value: 1,
@@ -194,10 +196,4 @@
 		}		
 	];
 	
-	var frozenDiceValues = [
-		{
-			value: 3,
-			image: 'assests/img/DiceFaceThree.png'
-		}		
-	];	
 })();
