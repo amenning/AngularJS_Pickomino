@@ -49,7 +49,7 @@
 		}
 	}])
 	
-	.controller("RollDiceController", function(SetDiceImage, CheckValidDiceFreeze){
+	.controller("RollDiceController", ['SetDiceImage', 'CheckValidDiceFreeze', function(SetDiceImage, CheckValidDiceFreeze){
 		this.activeDice = activeDiceValues;
 		this.frozenDice = frozenDiceValues;
 		
@@ -73,7 +73,7 @@
 				console.log(playerNotification);
 			}
 		}
-	});	
+	}]);	
 
 	var playerNotification = '';
 	
@@ -181,8 +181,8 @@
 	
 	var frozenDiceValues = [
 		{
-			value: 1,
-			image: 'assests/img/DiceFaceOne.png'
+			value: 3,
+			image: 'assests/img/DiceFaceThree.png'
 		}		
 	];	
 })();
