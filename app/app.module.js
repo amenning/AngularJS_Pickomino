@@ -49,7 +49,16 @@
 		}
 	}])
 	
-	.controller("RollDiceController", ['SetDiceImage', 'CheckValidDiceFreeze', function(SetDiceImage, CheckValidDiceFreeze){
+	.factory("ActiveDiceFilter", ['$filter', function ActiveDiceFilterFactory($filter){
+		return {
+			count: function(value){
+				var found = $filter('filter')(activeDiceValues, {value: value}, true);
+				return found.length;				
+			}
+		}
+	}])	
+	
+	.controller("RollDiceController", ['SetDiceImage', 'CheckValidDiceFreeze', 'ActiveDiceFilter', function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter){
 		this.activeDice = activeDiceValues;
 		this.frozenDice = frozenDiceValues;
 		
@@ -67,7 +76,14 @@
 		this.freezeDice = function(diceValue){
 			if(CheckValidDiceFreeze.validate(diceValue)){
 				diceImage = SetDiceImage.imagify(diceValue);
-				this.frozenDice.push({value: diceValue, image: diceImage});
+				count = ActiveDiceFilter.count(diceValue);
+				for(var x=0; x<count; x++){
+					this.frozenDice.push({value: diceValue, image: diceImage});	
+				}
+//				holding = this.activeDice.filter(function (el) {
+//					return el.value !== diceValue;
+//				});
+//				console.log(activeDiceValues);
 			}else{
 				playerNotification = 'You already froze that number!';
 				console.log(playerNotification);
