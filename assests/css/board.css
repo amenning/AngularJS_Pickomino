@@ -86,7 +86,17 @@
    background-color: #457f86;
    border-radius: 6px;
    border: 2px solid #fff;
+   height: 100px;
  }
+ .playerNotification{
+   display: flex;
+   justify-content: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 32px;
+ } 
  .buttons {
    flex: 0 0 auto;
    height: 25px;
