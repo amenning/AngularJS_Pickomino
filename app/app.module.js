@@ -164,35 +164,43 @@
 	var activeDiceValues = [
 		{
 			value: 1,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 2,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 3,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 4,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 5,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 6,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 7,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		},
 		{
 			value: 8,
-			image: 'assests/img/DiceFaceOne.png'
+			image: 'assests/img/DiceFaceOne.png',
+			canFreeze: true
 		}		
 	];
 	
