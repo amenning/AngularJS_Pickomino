@@ -177,15 +177,13 @@
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
 		
-		var playerMessage = 'Please click "roll" to roll the dice.';
+		var playerMessage = {info : 'Please click "roll" to roll the dice.'};
 		
 		return {
 			message: playerMessage,
 			
 			setMessage: function(textMessage){
-				console.log(textMessage);
-				playerMessage = textMessage;
-				console.log(playerMessage);
+				playerMessage.info = textMessage;
 			}
 		
 		};
