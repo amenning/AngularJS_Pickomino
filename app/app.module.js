@@ -182,6 +182,24 @@
 			}
 		};
 	}])	
+	
+	.factory("GameAction", [function GameActionFactory(){
+		
+		var gameActionStatus = {
+			roll: true,
+			freezeDice: false,
+			takeWorm: false
+		};
+		
+		return {
+			status: gameActionStatus,
+		
+			setStatus: function(action, status){
+				gameActionStatus[action] = status;
+				console.log(gameActionStatus);
+			}
+		};
+	}])		
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
 		
@@ -264,38 +282,60 @@
 		'GrillWormsArray',		
 		'PlayerNotification',
 		'PlayerWormsArray',
+		'GameAction',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, $scope){
+		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
 			this.rollDice = function (){
-				for(var x=0; x<this.activeDice.length; x++){
-					// Returns a random integer between min (included) and max (excluded)
-					// Using Math.round() will give you a non-uniform distribution!
-					this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
-					this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
+				if(GameAction.status.roll===true){
+					for(var x=0; x<this.activeDice.length; x++){
+						// Returns a random integer between min (included) and max (excluded)
+						// Using Math.round() will give you a non-uniform distribution!
+						this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
+						this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
+					}
+					PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
+					GameAction.setStatus('roll', false);
+					GameAction.setStatus('takeWorm', true);
+					GameAction.setStatus('freezeDice', true);
+				}else{
+					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group or take a worm, if possible.');
 				}
-				PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
 			};
 			
 			this.freezeDice = function(diceValue){
-				if(CheckValidDiceFreeze.validate(diceValue)){
-					diceImage = SetDiceImage.imagify(diceValue);
-					count = ActiveDiceFilter.count(diceValue);
-					for(var x=0; x<count; x++){
-						FrozenDiceArray.add({value: diceValue, image: diceImage});	
+				if(GameAction.status.freezeDice===true){
+					if(CheckValidDiceFreeze.validate(diceValue)){
+						diceImage = SetDiceImage.imagify(diceValue);
+						count = ActiveDiceFilter.count(diceValue);
+						for(var x=0; x<count; x++){
+							FrozenDiceArray.add({value: diceValue, image: diceImage});	
+						}
+						ActiveDiceArray.remove(diceValue);
+						GameAction.setStatus('roll', true);
+						GameAction.setStatus('takeWorm', true);
+						GameAction.setStatus('freezeDice', false);
+						PlayerNotification.setMessage('Please click "roll" to roll the dice.');
+					}else{
+						PlayerNotification.setMessage('You already froze that number!');
 					}
-					ActiveDiceArray.remove(diceValue);
-					PlayerNotification.setMessage('Please click "roll" to roll the dice.');
 				}else{
-					PlayerNotification.setMessage('You already froze that number!');
+					PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
 				}
 			}
 			
 			this.takeWorm = function(wormValue){
-				GrillWormsArray.removeWorm(wormValue);
-				PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+				if(GameAction.status.takeWorm===true){
+					GrillWormsArray.removeWorm(wormValue);
+					GameAction.setStatus('roll', true);
+					GameAction.setStatus('takeWorm', false);
+					GameAction.setStatus('freezeDice', false);
+					PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+				}else{
+					PlayerNotification.setMessage('You need to reroll the dice.');
+				}
 			}
 		}
 	]);	
