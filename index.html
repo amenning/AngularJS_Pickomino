@@ -39,8 +39,12 @@
 					</button>
 				</div>
 				<br/>
-				<div class = 'foot inset'>
+				<div class = 'foot inset' ng-controller="PlayerWormsController as playerWorms">
 					<span class = 'logger'>Player's Worms</span>
+					<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
+						{{playerWorm.value}}
+						<img ng-src="{{playerWorm.image}}" />
+					</div>
 				</div>
 			</div>
 		</div>

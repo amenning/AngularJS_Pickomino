@@ -197,6 +197,18 @@
 		};
 	}])	
 	
+	.factory("PlayerWormsArray", [function PlayerWromsFactory(){
+		var playerWormsArray = [ ];
+		
+		return {
+			array: playerWormsArray,
+
+			addWorm: function(wormObject){	
+				playerWormsArray.push(wormObject);
+			}
+		};
+	}])	
+	
 	.factory("CheckValidDiceFreeze", [
 		'$filter', 
 		'FrozenDiceArray',
@@ -239,6 +251,10 @@
 		this.messageText = PlayerNotification.message;
 	}])	
 	
+	.controller("PlayerWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
+		this.wormValues = PlayerWormsArray.array;
+	}])	
+	
 	.controller("RollDiceController", [
 		'SetDiceImage', 
 		'CheckValidDiceFreeze', 
@@ -247,8 +263,9 @@
 		'FrozenDiceArray',
 		'GrillWormsArray',		
 		'PlayerNotification',
+		'PlayerWormsArray',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, $scope){
+		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
@@ -278,6 +295,7 @@
 			
 			this.takeWorm = function(wormValue){
 				GrillWormsArray.removeWorm(wormValue);
+				PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
 			}
 		}
 	]);	
