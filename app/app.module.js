@@ -157,7 +157,15 @@
 		];
 		
 		return {
-			array: grillWormsArray			
+			array: grillWormsArray,
+
+			removeWorm: function(wormValue){	
+				for(var x=grillWormsArray.length-1; x>=0; x--){
+					if(grillWormsArray[x].value === wormValue){
+						grillWormsArray.splice(x, 1);
+					}
+				}
+			}
 		};
 	}])
 	
@@ -236,10 +244,11 @@
 		'CheckValidDiceFreeze', 
 		'ActiveDiceFilter', 
 		'ActiveDiceArray', 
-		'FrozenDiceArray', 
+		'FrozenDiceArray',
+		'GrillWormsArray',		
 		'PlayerNotification',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, PlayerNotification, $scope){
+		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
@@ -265,6 +274,10 @@
 				}else{
 					PlayerNotification.setMessage('You already froze that number!');
 				}
+			}
+			
+			this.takeWorm = function(wormValue){
+				GrillWormsArray.removeWorm(wormValue);
 			}
 		}
 	]);	

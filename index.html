@@ -11,7 +11,7 @@
 		<div ng-controller="RollDiceController as action">
 			<div class = 'container inset' ng-controller="PlayerNotificationController as notice">
 				<div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
-					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues">
+					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues" ng-click="action.takeWorm(worm.value)">
 						{{worm.value}}
 						<img ng-src="{{worm.image}}" />
 					</div>
