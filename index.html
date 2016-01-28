@@ -8,7 +8,7 @@
 		<script src="app/app.module.js"></script>
 	</head>
 	<body>
-		<div ng-controller="RollDiceController as action">
+		<div ng-controller="ActionController as action">
 			<div class = 'container inset' ng-controller="PlayerNotificationController as notice">
 				<div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
 					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues" ng-click="action.takeWorm(worm.value)">
@@ -39,8 +39,10 @@
 					</button>
 				</div>
 				<br/>
-				<div class = 'foot inset' ng-controller="PlayerWormsController as playerWorms">
+				<div class = 'playerNotification inset'>
 					<span class = 'logger'>Player's Worms</span>
+				</div>					
+				<div class = 'worms inset' ng-controller="PlayerWormsController as playerWorms">
 					<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
 						{{playerWorm.value}}
 						<img ng-src="{{playerWorm.image}}" />

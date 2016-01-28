@@ -255,7 +255,7 @@
 		this.wormValues = PlayerWormsArray.array;
 	}])	
 	
-	.controller("RollDiceController", [
+	.controller("ActionController", [
 		'SetDiceImage', 
 		'CheckValidDiceFreeze', 
 		'ActiveDiceFilter', 
