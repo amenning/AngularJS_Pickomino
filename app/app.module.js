@@ -188,7 +188,8 @@
 		var gameActionStatus = {
 			roll: true,
 			freezeDice: false,
-			takeWorm: false
+			takeWorm: false,
+			bunk: false
 		};
 		
 		return {
