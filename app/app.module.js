@@ -174,12 +174,18 @@
 		
 		var frozenDiceArray = [];
 		
+		var frozenDiceStatus = {sum: 0};
+		
 		return {
 			array: frozenDiceArray,
 		
 			add: function(dice){
 				frozenDiceArray.push(dice);
-			}
+				frozenDiceStatus.sum += dice.value;
+				console.log(frozenDiceStatus);
+			},
+			
+			frozenStatus: frozenDiceStatus
 		};
 	}])	
 	
@@ -285,7 +291,8 @@
 		this.diceValues = FrozenDiceArray.array;
 	}])
 
-	.controller("PlayerNotificationController", ['PlayerNotification', function(PlayerNotification){
+	.controller("PlayerNotificationController", ['PlayerNotification', 'FrozenDiceArray', function(PlayerNotification, FrozenDiceArray){
+		this.frozenStatus = FrozenDiceArray.frozenStatus;
 		this.messageText = PlayerNotification.message;
 	}])	
 	
