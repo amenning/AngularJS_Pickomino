@@ -29,50 +29,17 @@
 	})
 	
 
-	.factory("ActiveDiceArray", ['$filter', function ActiveDiceFactory($filter, $scope){
+	.factory("ActiveDiceArray", ['$filter', 'SetDiceImage', function ActiveDiceFactory($filter, SetDiceImage, $scope){
 		
-		var activeDiceArray = [
-			{
-				value: 1,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 2,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 3,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 4,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 5,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 6,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 7,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			},
-			{
-				value: 8,
-				image: 'assests/img/DiceFaceOne.png',
-				canFreeze: true
-			}		
-		];
+		var activeDiceArray = [ ];
+		
+		for(var x=0, diceValue, diceImage; x<8; x++){
+			// Returns a random integer between min (included) and max (excluded)
+			// Using Math.round() will give you a non-uniform distribution!
+			diceValue=Math.floor(Math.random() * (7 - 1)) + 1;
+			diceImage=SetDiceImage.imagify(diceValue);
+			activeDiceArray.push({value: diceValue, image: diceImage, canFreeze: true});
+		}
 		
 		return {
 			array: activeDiceArray,
@@ -279,6 +246,24 @@
 		}
 	])
 	
+	.factory("RandomDice", [
+		'ActiveDiceArray', 
+		'SetDiceImage',
+		function RandomDiceFactory(ActiveDiceArray, SetDiceImage){
+			return 	{	
+			
+				roll:	function(){
+							for(var x=0; x<ActiveDiceArray.array.length; x++){
+								// Returns a random integer between min (included) and max (excluded)
+								// Using Math.round() will give you a non-uniform distribution!
+								ActiveDiceArray.array[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
+								ActiveDiceArray.array[x].image=SetDiceImage.imagify(ActiveDiceArray.array[x].value);
+							}
+						}	
+			}
+		}
+	])	
+	
 	.controller("GrillWormsController", ['GrillWormsArray', function(GrillWormsArray){
 		this.grillWormsValues = GrillWormsArray.array;
 	}])	
@@ -309,20 +294,22 @@
 		'GrillWormsArray',		
 		'PlayerNotification',
 		'PlayerWormsArray',
+		'RandomDice',
 		'GameAction',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, GameAction, $scope){
+		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
 			this.rollDice = function (){
 				if(GameAction.status.roll===true){
-					for(var x=0; x<this.activeDice.length; x++){
+/* 					for(var x=0; x<this.activeDice.length; x++){
 						// Returns a random integer between min (included) and max (excluded)
 						// Using Math.round() will give you a non-uniform distribution!
 						this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
 						this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
-					}
+					} */
+					RandomDice.roll();
 					GameAction.checkMoveAvailable();
 					if(!GameAction.status.bunk){
 						PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
@@ -354,7 +341,7 @@
 						GameAction.setStatus('freezeDice', false);
 						PlayerNotification.setMessage('Please click "roll" to roll the dice.');
 					}else{
-						PlayerNotification.setMessage('You already froze that number!');
+						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 					}
 				}else{
 					PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
@@ -374,7 +361,5 @@
 			}
 		}
 	]);	
-
-//	var playerNotification = 'Please click "roll" to roll the dice.';
 	
 })();
