@@ -183,23 +183,42 @@
 		};
 	}])	
 	
-	.factory("GameAction", [function GameActionFactory(){
+	.factory("GameAction", [
+		'FrozenDiceArray', 
+		'ActiveDiceArray', 
+		'CheckValidDiceFreeze',
+		function GameActionFactory(FrozenDiceArray, ActiveDiceArray, CheckValidDiceFreeze){
 		
-		var gameActionStatus = {
-			roll: true,
-			freezeDice: false,
-			takeWorm: false,
-			bunk: false
-		};
-		
-		return {
-			status: gameActionStatus,
-		
-			setStatus: function(action, status){
-				gameActionStatus[action] = status;
-				console.log(gameActionStatus);
-			}
-		};
+			var gameActionStatus = {
+				roll: true,
+				freezeDice: false,
+				takeWorm: false,
+				bunk: false
+			};
+			
+			return {
+				status: gameActionStatus,
+			
+				setStatus: function(action, status){
+					gameActionStatus[action] = status;
+					console.log(gameActionStatus);
+				},
+				
+				checkMoveAvailable: function(){
+					var canDiceFreeze = false;
+					for(var x=0; x<ActiveDiceArray.array.length; x++){
+						if(CheckValidDiceFreeze.validate(ActiveDiceArray.array[x].value)){
+							canDiceFreeze = true;
+							console.log('CheckValidDiceFreeze Validate is true');
+						}
+					}
+					if(!canDiceFreeze){
+						gameActionStatus.bunk=true;
+					}
+					console.log('canDiceFreeze is ' + canDiceFreeze);
+					console.log('bunk is ' +gameActionStatus.bunk);
+				}
+			};
 	}])		
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
@@ -297,10 +316,18 @@
 						this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
 						this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
 					}
-					PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
-					GameAction.setStatus('roll', false);
-					GameAction.setStatus('takeWorm', true);
-					GameAction.setStatus('freezeDice', true);
+					GameAction.checkMoveAvailable();
+					if(!GameAction.status.bunk){
+						PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
+						GameAction.setStatus('roll', false);
+						GameAction.setStatus('takeWorm', true);
+						GameAction.setStatus('freezeDice', true);
+					}else{
+						PlayerNotification.setMessage('You have bunked!');
+						GameAction.setStatus('roll', false);
+						GameAction.setStatus('takeWorm', false);
+						GameAction.setStatus('freezeDice', false);
+					}
 				}else{
 					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group or take a worm, if possible.');
 				}
