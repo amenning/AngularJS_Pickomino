@@ -34,9 +34,7 @@
 		var activeDiceArray = [ ];
 		
 		for(var x=0, diceValue, diceImage; x<8; x++){
-			// Returns a random integer between min (included) and max (excluded)
-			// Using Math.round() will give you a non-uniform distribution!
-			diceValue=Math.floor(Math.random() * (7 - 1)) + 1;
+			diceValue=1;
 			diceImage=SetDiceImage.imagify(diceValue);
 			activeDiceArray.push({value: diceValue, image: diceImage, canFreeze: true});
 		}
@@ -149,7 +147,13 @@
 			add: function(dice){
 				frozenDiceArray.push(dice);
 				frozenDiceStatus.sum += dice.value;
-				console.log(frozenDiceStatus);
+			},
+			
+			emptyDice: function(){
+				for(var i=frozenDiceArray.length; i>0; i--){
+					frozenDiceArray.pop();
+				};
+				frozenDiceStatus.sum = 0;
 			},
 			
 			frozenStatus: frozenDiceStatus
@@ -159,8 +163,10 @@
 	.factory("GameAction", [
 		'FrozenDiceArray', 
 		'ActiveDiceArray', 
+		'GrillWormsArray',
 		'CheckValidDiceFreeze',
-		function GameActionFactory(FrozenDiceArray, ActiveDiceArray, CheckValidDiceFreeze){
+		'CheckValidWormTake',
+		function GameActionFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, CheckValidDiceFreeze, CheckValidWormTake){
 		
 			var gameActionStatus = {
 				roll: true,
@@ -174,22 +180,20 @@
 			
 				setStatus: function(action, status){
 					gameActionStatus[action] = status;
-					console.log(gameActionStatus);
 				},
 				
 				checkMoveAvailable: function(){
 					var canDiceFreeze = false;
+					var canTakeWorm = false;
 					for(var x=0; x<ActiveDiceArray.array.length; x++){
 						if(CheckValidDiceFreeze.validate(ActiveDiceArray.array[x].value)){
 							canDiceFreeze = true;
-							console.log('CheckValidDiceFreeze Validate is true');
 						}
 					}
+					//canTakeWorm = CheckValidWormTake.validate(FrozenDiceArray.frozenStatus.sum);
 					if(!canDiceFreeze){
 						gameActionStatus.bunk=true;
 					}
-					console.log('canDiceFreeze is ' + canDiceFreeze);
-					console.log('bunk is ' +gameActionStatus.bunk);
 				}
 			};
 	}])		
@@ -233,6 +237,21 @@
 		}
 	])
 	
+	.factory("CheckValidWormTake", [
+		'$filter', 
+		'GrillWormsArray',
+		'FrozenDiceArray',
+		function CheckValidWormTakeFactory($filter, GrillWormsArray, FrozenDiceArray){
+			return {
+				validate: function(wormValue){
+					var enoughDiceValue = (wormValue <= FrozenDiceArray.frozenStatus.sum);
+					var foundFrozenWormDie = $filter('filter')(FrozenDiceArray.array, {value: 6}, true);					
+					return (enoughDiceValue && foundFrozenWormDie);				
+				}
+			}
+		}
+	])	
+	
 	.factory("ActiveDiceFilter", [
 		'$filter', 
 		'ActiveDiceArray', 
@@ -248,8 +267,9 @@
 	
 	.factory("RandomDice", [
 		'ActiveDiceArray', 
+		'FrozenDiceArray', 
 		'SetDiceImage',
-		function RandomDiceFactory(ActiveDiceArray, SetDiceImage){
+		function RandomDiceFactory(ActiveDiceArray, FrozenDiceArray, SetDiceImage){
 			return 	{	
 			
 				roll:	function(){
@@ -259,7 +279,19 @@
 								ActiveDiceArray.array[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
 								ActiveDiceArray.array[x].image=SetDiceImage.imagify(ActiveDiceArray.array[x].value);
 							}
-						}	
+						},
+
+				resetDice:	function(){
+								for(var i=ActiveDiceArray.array.length; i>0; i--){
+									ActiveDiceArray.array.pop();
+								}
+								for(var x=0, diceValue, diceImage; x<8; x++){
+									diceValue=Math.floor(Math.random() * (7 - 1)) + 1;
+									diceImage=SetDiceImage.imagify(diceValue);
+									ActiveDiceArray.array.push({value: diceValue, image: diceImage, canFreeze: true});
+								}
+								FrozenDiceArray.emptyDice();
+							}						
 			}
 		}
 	])	
@@ -288,6 +320,7 @@
 	.controller("ActionController", [
 		'SetDiceImage', 
 		'CheckValidDiceFreeze', 
+		'CheckValidWormTake',
 		'ActiveDiceFilter', 
 		'ActiveDiceArray', 
 		'FrozenDiceArray',
@@ -297,7 +330,7 @@
 		'RandomDice',
 		'GameAction',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
+		function(SetDiceImage, CheckValidDiceFreeze, CheckValidWormTake, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
@@ -339,7 +372,7 @@
 						GameAction.setStatus('roll', true);
 						GameAction.setStatus('takeWorm', true);
 						GameAction.setStatus('freezeDice', false);
-						PlayerNotification.setMessage('Please click "roll" to roll the dice.');
+						PlayerNotification.setMessage('Please click "roll" to roll the dice or the worm you would like to take.');
 					}else{
 						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 					}
@@ -348,13 +381,18 @@
 				}
 			}
 			
-			this.takeWorm = function(wormValue){
+			this.takeWorm = function(wormValue){				
 				if(GameAction.status.takeWorm===true){
-					GrillWormsArray.removeWorm(wormValue);
-					GameAction.setStatus('roll', true);
-					GameAction.setStatus('takeWorm', false);
-					GameAction.setStatus('freezeDice', false);
-					PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+					if(CheckValidWormTake.validate(wormValue)){
+						GrillWormsArray.removeWorm(wormValue);
+						RandomDice.resetDice();
+						GameAction.setStatus('roll', true);
+						GameAction.setStatus('takeWorm', false);
+						GameAction.setStatus('freezeDice', false);
+						PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+					}else{
+						PlayerNotification.setMessage('You cannot take that worm tile.');
+					}
 				}else{
 					PlayerNotification.setMessage('You need to reroll the dice.');
 				}
