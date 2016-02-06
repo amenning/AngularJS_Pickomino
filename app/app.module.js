@@ -1,6 +1,13 @@
 (function(){
 	angular.module('pickominoGame', [])
 	
+	.directive("commonHeader", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "common-header.html"
+		};
+	})
+	
 	.factory("SetDiceImage", function SetDiceImageFactory(){
 		return {
 			imagify: function(diceValue){
