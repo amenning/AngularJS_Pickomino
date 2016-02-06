@@ -8,6 +8,13 @@
 		};
 	})
 	
+	.directive("commonFooter", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "common-footer.html"
+		};
+	})	
+	
 	.factory("SetDiceImage", function SetDiceImageFactory(){
 		return {
 			imagify: function(diceValue){
