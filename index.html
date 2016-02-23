@@ -14,10 +14,13 @@
 		
 		<div ng-controller="ActionController as action">
 			<div class = 'container-game inset' ng-controller="PlayerNotificationController as notice">
+				<div class = 'titles-box'>
+					<span class = 'titles'>Worms on the Grill</span>
+				</div>	
 				<div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
 					<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues" ng-click="action.takeWorm(worm.value)">
-						{{worm.value}}
-						<img ng-src="{{worm.image}}" />
+						<p>{{worm.value}}</p>
+						<img class="img-center" ng-src="{{worm.image}}" />
 					</div>
 				</div>
 				<br/>
@@ -44,12 +47,12 @@
 					</button>
 				</div>
 				<br/>
-				<div class = 'playerNotification inset'>
-					<span class = 'logger'>Player's Worms</span>
+				<div class = 'titles-box'>
+					<span class = 'titles'>Player's Worms</span>
 				</div>					
 				<div class = 'worms inset' ng-controller="PlayerWormsController as playerWorms">
 					<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
-						{{playerWorm.value}}
+						<p>{{playerWorm.value}}</p>
 						<img ng-src="{{playerWorm.image}}" />
 					</div>
 				</div>
