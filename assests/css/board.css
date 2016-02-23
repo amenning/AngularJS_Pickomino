@@ -166,3 +166,8 @@
 	border: 5px solid #78FA89;
 	border-radius: 15px;
  }
+ 
+ .frozenHighlight{
+	border: 5px solid #78FAFE;
+	border-radius: 15px;
+ }

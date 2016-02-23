@@ -160,7 +160,12 @@
 		
 			add: function(dice){
 				frozenDiceArray.push(dice);
-				frozenDiceStatus.sum += dice.value;
+				if(dice.value<=5){
+					frozenDiceStatus.sum += dice.value;
+				}else{
+					frozenDiceStatus.sum += 5;
+				}
+				
 			},
 			
 			emptyDice: function(){
