@@ -25,7 +25,7 @@
 				</div>
 				<br/>
 				<div class = 'activedice inset' ng-controller="ActiveDiceController as activeDice">
-					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)" ng-class="{ activeHighlight:dice.canFreeze }">
+					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
 						<img ng-src="{{dice.image}}" />
 					</div>
 				</div>
