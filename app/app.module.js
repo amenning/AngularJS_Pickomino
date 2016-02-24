@@ -123,7 +123,26 @@
 			},
 			
 			addWorm: function(wormValue){
-				grillWormsArray
+				grillArrayLength = grillWormsArray.length;
+				wormImage = SetWormImage.imagify(wormValue);
+				inserted = false;
+				if(grillWormsArray[grillArrayLength-1].value < wormValue){
+					grillWormsArray.push({value: wormValue, image:wormImage, canTake: false});
+					inserted = true;
+				}
+				for(var x=grillArrayLength-1; x>0; x--){
+					if(grillWormsArray[x-1].value < wormValue && wormValue < grillWormsArray[x].value){
+						grillWormsArray.splice(x, 0, {value: wormValue, image:wormImage, canTake: false});
+						inserted = true;
+					}
+				}				
+				if(inserted === false){
+					grillWormsArray.unshift({value: wormValue, image:wormImage, canTake: false});
+				}
+			},
+			
+			removeBunkWorm: function(){
+				grillWormsArray.pop();
 			}
 		};
 	}])
@@ -415,7 +434,8 @@
 					//return worm to grill
 					wormValue = PlayerWormsArray.removeBunkWorm();
 					//remove highest value worm from grill
-					GrillWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+					GrillWormsArray.addWorm(wormValue);
+					GrillWormsArray.removeBunkWorm();
 				}
 				//reset dice and start over
 				RandomDice.resetDice();
