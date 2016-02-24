@@ -207,6 +207,9 @@
 					for(var x=0; x<ActiveDiceArray.array.length; x++){
 						if(CheckValidDiceFreeze.validate(ActiveDiceArray.array[x].value)){
 							canDiceFreeze = true;
+							ActiveDiceArray.array[x].canFreeze = true;
+						}else{
+							ActiveDiceArray.array[x].canFreeze = false;
 						}
 					}
 					//canTakeWorm = CheckValidWormTake.validate(FrozenDiceArray.frozenStatus.sum);
