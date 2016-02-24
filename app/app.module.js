@@ -81,7 +81,7 @@
 		var activeDiceArray = [ ];
 		
 		for(var x=0, diceValue, diceImage; x<8; x++){
-			diceValue=1;
+			diceValue=6;
 			diceImage=SetDiceImage.imagify(diceValue);
 			activeDiceArray.push({value: diceValue, image: diceImage, canFreeze: true});
 		}
@@ -141,8 +141,10 @@
 				}
 			},
 			
-			removeBunkWorm: function(){
-				grillWormsArray.pop();
+			removeBunkWorm: function(wormValue){
+				if(grillWormsArray[grillWormsArray.length-1].value !== wormValue){
+					grillWormsArray.pop();
+				}
 			}
 		};
 	}])
@@ -314,7 +316,7 @@
 									ActiveDiceArray.array.pop();
 								}
 								for(var x=0, diceValue, diceImage; x<8; x++){
-									diceValue=Math.floor(Math.random() * (7 - 1)) + 1;
+									diceValue=6;
 									diceImage=SetDiceImage.imagify(diceValue);
 									ActiveDiceArray.array.push({value: diceValue, image: diceImage, canFreeze: true});
 								}
@@ -435,7 +437,7 @@
 					wormValue = PlayerWormsArray.removeBunkWorm();
 					//remove highest value worm from grill
 					GrillWormsArray.addWorm(wormValue);
-					GrillWormsArray.removeBunkWorm();
+					GrillWormsArray.removeBunkWorm(wormValue);
 				}
 				//reset dice and start over
 				RandomDice.resetDice();
