@@ -39,8 +39,41 @@
 						break;
 				};
 			}
-		}
+		};
 	})
+	
+	.factory("SetWormImage", function SetDiceImageFactory(){
+		return {
+			imagify: function(wormValue){
+				switch(wormValue){
+					case 21:
+					case 22:
+					case 23:
+					case 24:
+						return 'assests/img/OneWormTile.png';
+						break;
+					case 25:
+					case 26:
+					case 27:
+					case 28:
+						return 'assests/img/TwoWormTile.png';
+						break;
+					case 29:
+					case 30:
+					case 31:
+					case 32:
+						return 'assests/img/ThreeWormTile.png';
+						break;
+					case 33:
+					case 34:
+					case 35:
+					case 36:
+						return 'assests/img/FourWormTile.png';
+						break;
+				};
+			}
+		};
+	})	
 	
 
 	.factory("ActiveDiceArray", ['$filter', 'SetDiceImage', function ActiveDiceFactory($filter, SetDiceImage, $scope){
@@ -67,73 +100,16 @@
 	}])
 	
 	
-	.factory("GrillWormsArray", [function GrillWromsFactory(){
-		var grillWormsArray = [
-			{
-				value: 21,
-				image: 'assests/img/OneWormTile.png'
-			},
-			{
-				value: 22,
-				image: 'assests/img/OneWormTile.png'
-			},
-			{
-				value: 23,
-				image: 'assests/img/OneWormTile.png'
-			},
-			{
-				value: 24,
-				image: 'assests/img/OneWormTile.png'
-			},
-			{
-				value: 25,
-				image: 'assests/img/TwoWormTile.png'
-			},
-			{
-				value: 26,
-				image: 'assests/img/TwoWormTile.png'
-			},
-			{
-				value: 27,
-				image: 'assests/img/TwoWormTile.png'
-			},
-			{
-				value: 28,
-				image: 'assests/img/TwoWormTile.png'
-			},
-			{
-				value: 29,
-				image: 'assests/img/ThreeWormTile.png'
-			},
-			{
-				value: 30,
-				image: 'assests/img/ThreeWormTile.png'
-			},
-			{
-				value: 31,
-				image: 'assests/img/ThreeWormTile.png'
-			},
-			{
-				value: 32,
-				image: 'assests/img/ThreeWormTile.png'
-			},
-			{
-				value: 33,
-				image: 'assests/img/FourWormTile.png'
-			},
-			{
-				value: 34,
-				image: 'assests/img/FourWormTile.png'
-			},
-			{
-				value: 35,
-				image: 'assests/img/FourWormTile.png'
-			},
-			{
-				value: 36,
-				image: 'assests/img/FourWormTile.png'
-			}
-		];
+	.factory("GrillWormsArray", ['SetWormImage', function GrillWromsFactory(SetWormImage){
+
+		var grillWormsArray = [ ];
+		
+		for(var x=21, wormValue, wormImage; x<=36; x++){
+			wormValue=x;
+			wormImage=SetWormImage.imagify(wormValue);
+			grillWormsArray.push({value: wormValue, image: wormImage, canTake: false});
+		}
+
 		
 		return {
 			array: grillWormsArray,
@@ -144,6 +120,10 @@
 						grillWormsArray.splice(x, 1);
 					}
 				}
+			},
+			
+			addWorm: function(wormValue){
+				grillWormsArray
 			}
 		};
 	}])
@@ -234,14 +214,21 @@
 		};
 	}])	
 	
-	.factory("PlayerWormsArray", [function PlayerWromsFactory(){
+	.factory("PlayerWormsArray", ['SetWormImage', function PlayerWromsFactory(SetWormImage){
 		var playerWormsArray = [ ];
 		
 		return {
 			array: playerWormsArray,
 
-			addWorm: function(wormObject){	
-				playerWormsArray.push(wormObject);
+			addWorm: function(wormValue){	
+				wormImage = SetWormImage.imagify(wormValue);
+				playerWormsArray.push({value: wormValue, image: wormImage});
+			},
+			
+			removeBunkWorm: function(){
+				var wormValue = playerWormsArray[0].value;
+				playerWormsArray.shift();
+				return wormValue;
 			}
 		};
 	}])	
@@ -255,7 +242,7 @@
 					var found = $filter('filter')(FrozenDiceArray.array, {value: freezeValue}, true);
 					return (found.length===0);				
 				}
-			}
+			};
 		}
 	])
 	
@@ -270,7 +257,7 @@
 					var foundFrozenWormDie = $filter('filter')(FrozenDiceArray.array, {value: 6}, true);					
 					return (enoughDiceValue && foundFrozenWormDie);				
 				}
-			}
+			};
 		}
 	])	
 	
@@ -283,7 +270,7 @@
 					var found = $filter('filter')(ActiveDiceArray.array, {value: value}, true);
 					return found.length;				
 				}
-			}
+			};
 		}
 	])
 	
@@ -314,7 +301,7 @@
 								}
 								FrozenDiceArray.emptyDice();
 							}						
-			}
+			};
 		}
 	])	
 	
@@ -341,6 +328,7 @@
 	
 	.controller("ActionController", [
 		'SetDiceImage', 
+		'SetWormImage',
 		'CheckValidDiceFreeze', 
 		'CheckValidWormTake',
 		'ActiveDiceFilter', 
@@ -352,7 +340,7 @@
 		'RandomDice',
 		'GameAction',
 		'$scope',
-		function(SetDiceImage, CheckValidDiceFreeze, CheckValidWormTake, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
+		function(SetDiceImage, SetWormImage, CheckValidDiceFreeze, CheckValidWormTake, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			
@@ -376,6 +364,8 @@
 						GameAction.setStatus('roll', false);
 						GameAction.setStatus('takeWorm', false);
 						GameAction.setStatus('freezeDice', false);
+						alert('You have bunked.  If possible, you lose a worm and the highest grill worm is out of the game.');
+						this.bunkPenalty();
 					}
 				}else{
 					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group or take a worm, if possible.');
@@ -401,7 +391,7 @@
 				}else{
 					PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
 				}
-			}
+			};
 			
 			this.takeWorm = function(wormValue){				
 				if(GameAction.status.takeWorm===true){
@@ -411,14 +401,30 @@
 						GameAction.setStatus('roll', true);
 						GameAction.setStatus('takeWorm', false);
 						GameAction.setStatus('freezeDice', false);
-						PlayerWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+						PlayerWormsArray.addWorm(wormValue);
 					}else{
 						PlayerNotification.setMessage('You cannot take that worm tile.');
 					}
 				}else{
 					PlayerNotification.setMessage('You need to reroll the dice.');
 				}
-			}
+			};
+			
+			this.bunkPenalty = function(){
+				if(PlayerWormsArray.array.length!==0){
+					//return worm to grill
+					wormValue = PlayerWormsArray.removeBunkWorm();
+					//remove highest value worm from grill
+					GrillWormsArray.addWorm({value: wormValue, image: 'assests/img/FourWormTile.png'});
+				}
+				//reset dice and start over
+				RandomDice.resetDice();
+				GameAction.setStatus('roll', true);
+				GameAction.setStatus('takeWorm', false);
+				GameAction.setStatus('freezeDice', false);
+				GameAction.setStatus('bunk', false);
+				PlayerNotification.setMessage('You can now reroll the dice.');
+			};
 		}
 	]);	
 	
