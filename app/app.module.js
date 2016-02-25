@@ -308,7 +308,7 @@
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
 		
-		var playerMessage = {info : 'Goal: Try To Collect All The Worms!  Click "Roll" to start!'};
+		var playerMessage = {info : 'Goal: Try To Collect All The Worms!  Click "Roll" to Start!'};
 		
 		return {
 			message: playerMessage,
