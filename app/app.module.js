@@ -143,6 +143,8 @@
 
 		var grillWormsArray = [ ];
 		
+		var deadGrillWormsArray = [ ];
+		
 		for(var x=21, wormValue, wormImage; x<=36; x++){
 			wormValue=x;
 			wormImage=SetWormImage.imagify(wormValue);
@@ -153,6 +155,8 @@
 		return {
 			array: grillWormsArray,
 
+			deadArray: deadGrillWormsArray,
+			
 			removeWorm: function(wormValue){	
 				for(var x=grillWormsArray.length-1; x>=0; x--){
 					if(grillWormsArray[x].value === wormValue){
@@ -181,8 +185,11 @@
 			},
 			
 			removeBunkWorm: function(wormValue){
-				if(grillWormsArray[grillWormsArray.length-1].value !== wormValue){
+				highestGrillWormValue = grillWormsArray[grillWormsArray.length-1].value;
+				if(highestGrillWormValue !== wormValue){
 					grillWormsArray.pop();
+					wormImage = SetWormImage.imagify(highestGrillWormValue);
+					deadGrillWormsArray.unshift({value: highestGrillWormValue, image:wormImage});
 				}
 			},
 			
@@ -412,6 +419,7 @@
 	
 	.controller("GrillWormsController", ['GrillWormsArray', function(GrillWormsArray){
 		this.grillWormsValues = GrillWormsArray.array;
+		this.deadGrillWormsValues = GrillWormsArray.deadArray;
 	}])	
 	
 	.controller("ActiveDiceController", ['ActiveDiceArray', function(ActiveDiceArray){

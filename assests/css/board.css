@@ -186,6 +186,20 @@
 	border-radius: 15px;
  }
  
+ .dead{
+	border: 5px solid #FF0000;
+	border-radius: 15px;
+	position: relative;
+ }
+ .cross{
+  	left: 0;
+  	position: absolute;
+  	top: -75px;
+  	text-align: center;
+  	font-size: 175px;
+  	color: red;
+ }
+ 
  .frozenHighlight{
 	border: 5px solid #78FAFE;
 	border-radius: 15px;

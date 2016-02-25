@@ -22,6 +22,11 @@
 						<p>{{worm.value}}</p>
 						<img class="img-center" ng-src="{{worm.image}}" />
 					</div>
+					<div class = 'worm inset dead' ng-repeat="deadWorm in grillWorms.deadGrillWormsValues">
+						<p>{{deadWorm.value}}</p>
+						<img class="img-center" ng-src="{{deadWorm.image}}" />
+						<span class="cross">x</span>
+					</div>
 				</div>
 				<br/>
 				<div class = 'activedice inset' ng-controller="ActiveDiceController as activeDice">
