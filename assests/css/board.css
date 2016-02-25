@@ -82,16 +82,20 @@
    display: flex;
    justify-content: center;
    background-color: #457f86;
-   border-radius: 6px;
-   border: 2px solid #fff;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
    height: 100px;
  }
  .frozendice{
    display: flex;
    justify-content: center;
    background-color: #457f86;
-   border-radius: 6px;
-   border: 2px solid #fff;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
    height: 100px;
  }
  .dice{
@@ -109,8 +113,10 @@
    justify-content: center;
    align-items: center;
    background-color: #457f86;
-   border-radius: 6px;
-   border: 2px solid #fff;
+   border-color: #fff;
+   border-style: solid;
+   border-width: 0px 2px 2px 2px;
+   border-radius: 0px 0px 6px 6px;
    height: 100px;
  }
  .playerNotification{
@@ -207,5 +213,10 @@
  
 .activeButtonHighlight{
 	border: 5px solid #78FA89;
+	border-radius: 15px;
+ }
+ 
+.bunkButtonHighlight{
+	border: 5px solid #FF0000;
 	border-radius: 15px;
  }

@@ -29,28 +29,41 @@
 					</div>
 				</div>
 				<br/>
-				<div class = 'playeroptions outset'>
-					<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }">
-						Roll
-					</button>
-				</div>
-				<br/>				
-				<div class = 'activedice inset' ng-controller="ActiveDiceController as activeDice">
-					<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
-						<img ng-src="{{dice.image}}" />
+				<div>
+					<div class = 'titles-box'>
+						<span class = 'titles'>{{notice.messageText.info}}</span>
+					</div>	
+					<div class = 'playeroptions outset'>
+						<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.bunk">
+							Roll
+						</button>
+						<button class = 'buttons inset bunkButtonHighlight' ng-show="action.gameStatus.bunk" ng-click="action.bunkPenalty()">
+							Clear Bunk
+						</button>
 					</div>
 				</div>
 				<br/>
-				<div class = 'frozendice inset' ng-controller="FrozenDiceController as frozenDice">
-					<div class = 'dice inset frozenHighlight' ng-repeat="dice in frozenDice.diceValues | orderBy:'value' track by $index ">
-						<img ng-src="{{dice.image}}" />
+				<div ng-controller="ActiveDiceController as activeDice">				
+					<div class = 'titles-box'>
+						<span class = 'titles'>Active Dice</span>
+					</div>
+					<div class = 'activedice inset'>
+						<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
+							<img ng-src="{{dice.image}}" />
+						</div>
 					</div>
 				</div>
 				<br/>
-				<div class = 'playerNotification inset'>
-					<p>Frozen dice sum: {{notice.frozenStatus.sum}}</p>
-					<p>{{notice.messageText.info}}</p>
-				</div>				
+				<div ng-controller="FrozenDiceController as frozenDice">
+					<div class = 'titles-box'>
+						<span class = 'titles'>Frozen Dice Sum: {{notice.frozenStatus.sum}}</span>
+					</div>					
+					<div class = 'frozendice inset' ng-controller="FrozenDiceController as frozenDice">
+						<div class = 'dice inset frozenHighlight' ng-repeat="dice in frozenDice.diceValues | orderBy:'value' track by $index ">
+							<img ng-src="{{dice.image}}" />
+						</div>
+					</div>
+				</div>
 				<br/>
 				<div ng-controller="PlayerWormsController as playerWorms">
 					<div class = 'titles-box'>

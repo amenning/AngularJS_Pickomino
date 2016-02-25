@@ -461,27 +461,20 @@
 			
 			this.rollDice = function (){
 				if(GameAction.status.roll===true){
-/* 					for(var x=0; x<this.activeDice.length; x++){
-						// Returns a random integer between min (included) and max (excluded)
-						// Using Math.round() will give you a non-uniform distribution!
-						this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
-						this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
-					} */
 					GrillWormsArray.removeWormHighlight();
 					RandomDice.roll();
-					GameAction.checkMoveAvailable();
+					GameAction.checkMoveAvailable();				
 					if(!GameAction.status.bunk){
 						PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
 						GameAction.setStatus('roll', false);
 						GameAction.setStatus('takeWorm', true);
 						GameAction.setStatus('freezeDice', true);
 					}else{
-						PlayerNotification.setMessage('You have bunked!');
+						PlayerNotification.setMessage('You have bunked!  If possible, you lose your newest worm (leftmost) and the highest grill worm is out of the game.');
 						GameAction.setStatus('roll', false);
 						GameAction.setStatus('takeWorm', false);
 						GameAction.setStatus('freezeDice', false);
-						alert('You have bunked.  If possible, you lose a worm and the highest grill worm is out of the game.');
-						this.bunkPenalty();
+						GameAction.setStatus('bunk', true);
 					}
 				}else if(GameAction.status.gameOver===false){
 					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group.');
