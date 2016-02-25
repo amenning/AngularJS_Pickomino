@@ -50,7 +50,7 @@
 				<div class = 'titles-box'>
 					<span class = 'titles'>Player's Worms</span>
 				</div>					
-				<div class = 'worms inset' ng-controller="PlayerWormsController as playerWorms">
+				<div class = 'playerWorms inset' ng-controller="PlayerWormsController as playerWorms">
 					<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
 						<p>{{playerWorm.value}}</p>
 						<img ng-src="{{playerWorm.image}}" />

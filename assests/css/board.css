@@ -41,6 +41,18 @@
  }
  .worms{
    display: flex;
+   justify-content: center;
+   background-color: #457f86;
+   border-radius: 0px 0px 6px 6px;
+   border-style: solid;
+   border-color: #fff;
+   border-width: 0px 2px 2px 2px;
+   height: 130px;
+   padding: 5px;
+ }
+  .playerWorms{
+   display: flex;
+   justify-content: center;
    background-color: #457f86;
    border-radius: 0px 0px 6px 6px;
    border-style: solid;
@@ -50,11 +62,11 @@
    padding: 5px;
  }
  .worm{
-   /*flex: 1 0 auto;*/
+   flex: 0 0 auto;
    background: white;
    height: 120px;
    width: 100px;
-   margin: 0 auto;
+   /*margin: 0 auto;*/
    padding: 0px 0px 0px 0px;
    border-color: #215f1e;
    border-style: solid;
