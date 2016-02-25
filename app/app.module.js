@@ -74,6 +74,39 @@
 			}
 		};
 	})	
+
+	.factory("GetWormType", function SetDiceImageFactory(){
+		return {
+			amount: function(wormValue){
+				switch(wormValue){
+					case 21:
+					case 22:
+					case 23:
+					case 24:
+						return 1;
+						break;
+					case 25:
+					case 26:
+					case 27:
+					case 28:
+						return 2;
+						break;
+					case 29:
+					case 30:
+					case 31:
+					case 32:
+						return 3;
+						break;
+					case 33:
+					case 34:
+					case 35:
+					case 36:
+						return 4;
+						break;
+				};
+			}
+		};
+	})	
 	
 
 	.factory("ActiveDiceArray", ['$filter', 'SetDiceImage', function ActiveDiceFactory($filter, SetDiceImage, $scope){
@@ -280,20 +313,26 @@
 		};
 	}])	
 	
-	.factory("PlayerWormsArray", ['SetWormImage', function PlayerWromsFactory(SetWormImage){
+	.factory("PlayerWormsArray", ['SetWormImage', 'GetWormType', function PlayerWromsFactory(SetWormImage, GetWormType){
 		var playerWormsArray = [ ];
+		
+		var playerStatus = { total: 0 };
 		
 		return {
 			array: playerWormsArray,
-
+			
+			status: playerStatus,
+			
 			addWorm: function(wormValue){	
 				wormImage = SetWormImage.imagify(wormValue);
 				playerWormsArray.unshift({value: wormValue, image: wormImage});
+				playerStatus.total += GetWormType.amount(wormValue);
 			},
 			
 			removeBunkWorm: function(){
 				var wormValue = playerWormsArray[0].value;
 				playerWormsArray.shift();
+				playerStatus.total -= GetWormType.amount(wormValue);
 				return wormValue;
 			}
 		};
@@ -390,6 +429,7 @@
 	
 	.controller("PlayerWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
 		this.wormValues = PlayerWormsArray.array;
+		this.status = PlayerWormsArray.status;
 	}])	
 	
 	.controller("ActionController", [
@@ -435,7 +475,7 @@
 						alert('You have bunked.  If possible, you lose a worm and the highest grill worm is out of the game.');
 						this.bunkPenalty();
 					}
-				}else{
+				}else if(GameAction.status.gameOver===false){
 					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group or take a worm, if possible.');
 				}
 			};
@@ -460,7 +500,7 @@
 					}else{
 						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 					}
-				}else{
+				}else if(GameAction.status.gameOver===false){
 					PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
 				}
 			};

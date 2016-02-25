@@ -47,13 +47,15 @@
 					</button>
 				</div>
 				<br/>
-				<div class = 'titles-box'>
-					<span class = 'titles'>Player's Worms</span>
-				</div>					
-				<div class = 'playerWorms inset' ng-controller="PlayerWormsController as playerWorms">
-					<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
-						<p>{{playerWorm.value}}</p>
-						<img ng-src="{{playerWorm.image}}" />
+				<div ng-controller="PlayerWormsController as playerWorms">
+					<div class = 'titles-box'>
+						<span class = 'titles'>Player's Worms ( <ng-pluralize count=playerWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+					</div>					
+					<div class = 'playerWorms inset'>
+						<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
+							<p>{{playerWorm.value}}</p>
+							<img ng-src="{{playerWorm.image}}" />
+						</div>
 					</div>
 				</div>
 			</div>
