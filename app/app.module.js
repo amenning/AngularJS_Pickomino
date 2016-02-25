@@ -176,7 +176,10 @@
 		
 		var frozenDiceArray = [];
 		
-		var frozenDiceStatus = {sum: 0};
+		var frozenDiceStatus = {
+								sum: 0,
+								haveWorm: false
+								};
 		
 		return {
 			array: frozenDiceArray,
@@ -187,6 +190,7 @@
 					frozenDiceStatus.sum += dice.value;
 				}else{
 					frozenDiceStatus.sum += 5;
+					frozenDiceStatus.haveWorm = true;
 				}
 				
 			},
@@ -196,6 +200,7 @@
 					frozenDiceArray.pop();
 				};
 				frozenDiceStatus.sum = 0;
+				frozenDiceStatus.haveWorm = false;
 			},
 			
 			frozenStatus: frozenDiceStatus
@@ -444,7 +449,9 @@
 						GameAction.setStatus('roll', true);
 						GameAction.setStatus('takeWorm', true);
 						GameAction.setStatus('freezeDice', false);
-						GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
+						if(FrozenDiceArray.frozenStatus.haveWorm){
+							GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
+						}
 						PlayerNotification.setMessage('Please click "roll" to roll the dice or the worm you would like to take.');
 					}else{
 						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
@@ -463,6 +470,7 @@
 						GameAction.setStatus('takeWorm', false);
 						GameAction.setStatus('freezeDice', false);
 						PlayerWormsArray.addWorm(wormValue);
+						GrillWormsArray.removeWormHighlight();
 					}else{
 						PlayerNotification.setMessage('You cannot take that worm tile.');
 					}
