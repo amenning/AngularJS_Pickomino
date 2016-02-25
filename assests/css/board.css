@@ -211,6 +211,11 @@
 	border-radius: 15px;
  }
  
+ .redText{
+ 	background-color: #770000;
+ 	color: #FF0000;
+ }
+ 
 .activeButtonHighlight{
 	border: 5px solid #78FA89;
 	border-radius: 15px;

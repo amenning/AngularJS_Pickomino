@@ -31,7 +31,7 @@
 				<br/>
 				<div>
 					<div class = 'titles-box'>
-						<span class = 'titles'>{{notice.messageText.info}}</span>
+						<span class = 'titles' ng-class="{ 'redText' : action.gameStatus.bunk }">{{notice.messageText.info}}</span>
 					</div>	
 					<div class = 'playeroptions outset'>
 						<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.bunk">
@@ -56,7 +56,7 @@
 				<br/>
 				<div ng-controller="FrozenDiceController as frozenDice">
 					<div class = 'titles-box'>
-						<span class = 'titles'>Frozen Dice Sum: {{notice.frozenStatus.sum}}</span>
+						<span class = 'titles'>Frozen Dice (Sum: {{notice.frozenStatus.sum}})</span>
 					</div>					
 					<div class = 'frozendice inset' ng-controller="FrozenDiceController as frozenDice">
 						<div class = 'dice inset frozenHighlight' ng-repeat="dice in frozenDice.diceValues | orderBy:'value' track by $index ">

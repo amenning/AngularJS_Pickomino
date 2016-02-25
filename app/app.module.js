@@ -467,7 +467,7 @@
 					if(!GameAction.status.bunk){
 						PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
 						GameAction.setStatus('roll', false);
-						GameAction.setStatus('takeWorm', true);
+						GameAction.setStatus('takeWorm', false);
 						GameAction.setStatus('freezeDice', true);
 					}else{
 						PlayerNotification.setMessage('You have bunked!  If possible, you lose your newest worm (leftmost) and the highest grill worm is out of the game.');
@@ -510,25 +510,24 @@
 				if(GameAction.status.takeWorm===true){
 					if(CheckValidWormTake.validate(wormValue)){
 						GrillWormsArray.removeWorm(wormValue);
-						RandomDice.resetDice();
-						GameAction.setStatus('roll', true);
-						GameAction.setStatus('takeWorm', false);
-						GameAction.setStatus('freezeDice', false);
 						PlayerWormsArray.addWorm(wormValue);
 						GrillWormsArray.removeWormHighlight();
-						PlayerNotification.setMessage('Please roll the dice.');
+						GameAction.setStatus('takeWorm', false);
+						GameAction.setStatus('freezeDice', false);
+						if(GrillWormsArray.array.length === 0){
+							GameAction.setStatus('gameOver', true);
+							GameAction.setStatus('roll', false);
+							PlayerNotification.setMessage('Game Over!');
+						}else{
+							RandomDice.resetDice();
+							GameAction.setStatus('roll', true);
+							PlayerNotification.setMessage('Please roll the dice.');
+						}
 					}else{
 						PlayerNotification.setMessage('You cannot take that worm tile.');
 					}
-				}else{
+				}else if(GameAction.status.roll===true){
 					PlayerNotification.setMessage('You need to reroll the dice.');
-				}
-				if(GrillWormsArray.array.length === 0){
-					GameAction.setStatus('gameOver', true);
-					GameAction.setStatus('roll', false);
-					GameAction.setStatus('takeWorm', false);
-					GameAction.setStatus('freezeDice', false);
-					PlayerNotification.setMessage('Game Over!');
 				}
 			};
 			
