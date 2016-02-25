@@ -42,7 +42,7 @@
 				</div>				
 				<br/>
 				<div class = 'playeroptions outset'>
-					<button class = 'buttons inset' ng-click="action.rollDice()">
+					<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }">
 						Roll
 					</button>
 				</div>

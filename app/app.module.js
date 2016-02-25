@@ -221,7 +221,21 @@
 				status: gameActionStatus,
 			
 				setStatus: function(action, status){
-					gameActionStatus[action] = status;
+					switch(action){
+						case 'roll':
+							gameActionStatus.roll = status;
+							break;
+						case 'freezeDice':
+							gameActionStatus.freezeDice = status;
+							break;	
+						case 'takeWorm':
+							gameActionStatus.takeWorm = status;
+							break;	
+						case 'bunk':
+							gameActionStatus.bunk = status;
+							break;		
+					}
+					
 				},
 				
 				checkMoveAvailable: function(){
@@ -386,6 +400,7 @@
 		function(SetDiceImage, SetWormImage, CheckValidDiceFreeze, CheckValidWormTake, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
+			this.gameStatus = GameAction.status;
 			
 			this.rollDice = function (){
 				if(GameAction.status.roll===true){
