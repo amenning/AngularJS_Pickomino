@@ -219,7 +219,8 @@
 				roll: true,
 				freezeDice: false,
 				takeWorm: false,
-				bunk: false
+				bunk: false,
+				gameOver: true
 			};
 			
 			return {
@@ -238,6 +239,9 @@
 							break;	
 						case 'bunk':
 							gameActionStatus.bunk = status;
+							break;
+						case 'gameOver':
+							gameActionStatus.gameOver = status;
 							break;		
 					}
 					
@@ -284,7 +288,7 @@
 
 			addWorm: function(wormValue){	
 				wormImage = SetWormImage.imagify(wormValue);
-				playerWormsArray.push({value: wormValue, image: wormImage});
+				playerWormsArray.unshift({value: wormValue, image: wormImage});
 			},
 			
 			removeBunkWorm: function(){
@@ -476,6 +480,13 @@
 					}
 				}else{
 					PlayerNotification.setMessage('You need to reroll the dice.');
+				}
+				if(GrillWormsArray.array.length === 0){
+					GameAction.setStatus('gameOver', true);
+					GameAction.setStatus('roll', false);
+					GameAction.setStatus('takeWorm', false);
+					GameAction.setStatus('freezeDice', false);
+					PlayerNotification.setMessage('Game Over!');
 				}
 			};
 			
