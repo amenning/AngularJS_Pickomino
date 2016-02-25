@@ -83,7 +83,7 @@
 		for(var x=0, diceValue, diceImage; x<8; x++){
 			diceValue=6;
 			diceImage=SetDiceImage.imagify(diceValue);
-			activeDiceArray.push({value: diceValue, image: diceImage, canFreeze: true});
+			activeDiceArray.push({value: diceValue, image: diceImage, canFreeze: false});
 		}
 		
 		return {
@@ -94,6 +94,12 @@
 					if(activeDiceArray[x].value === diceValue){
 						activeDiceArray.splice(x, 1);
 					}
+				}
+			},
+			
+			removeHighlight: function(){
+				for(var x=activeDiceArray.length-1; x>=0; x--){
+					activeDiceArray[x].canFreeze = false;
 				}
 			}
 		};
@@ -144,6 +150,22 @@
 			removeBunkWorm: function(wormValue){
 				if(grillWormsArray[grillWormsArray.length-1].value !== wormValue){
 					grillWormsArray.pop();
+				}
+			},
+			
+			highlightWorms: function(frozenDiceSum){
+				for(var x=grillWormsArray.length-1; x>=0; x--){
+					if(grillWormsArray[x].value <= frozenDiceSum){
+						grillWormsArray[x].canTake=true;
+					}else{
+						grillWormsArray[x].canTake=false;
+					}
+				}
+			},
+			
+			removeWormHighlight: function(){
+				for(var x=grillWormsArray.length-1; x>=0; x--){					
+						grillWormsArray[x].canTake=false;
 				}
 			}
 		};
@@ -318,7 +340,7 @@
 								for(var x=0, diceValue, diceImage; x<8; x++){
 									diceValue=6;
 									diceImage=SetDiceImage.imagify(diceValue);
-									ActiveDiceArray.array.push({value: diceValue, image: diceImage, canFreeze: true});
+									ActiveDiceArray.array.push({value: diceValue, image: diceImage, canFreeze: false});
 								}
 								FrozenDiceArray.emptyDice();
 							}						
@@ -373,6 +395,7 @@
 						this.activeDice[x].value=Math.floor(Math.random() * (7 - 1)) + 1;
 						this.activeDice[x].image=SetDiceImage.imagify(this.activeDice[x].value);
 					} */
+					GrillWormsArray.removeWormHighlight();
 					RandomDice.roll();
 					GameAction.checkMoveAvailable();
 					if(!GameAction.status.bunk){
@@ -396,6 +419,7 @@
 			this.freezeDice = function(diceValue){
 				if(GameAction.status.freezeDice===true){
 					if(CheckValidDiceFreeze.validate(diceValue)){
+						ActiveDiceArray.removeHighlight();
 						diceImage = SetDiceImage.imagify(diceValue);
 						count = ActiveDiceFilter.count(diceValue);
 						for(var x=0; x<count; x++){
@@ -405,6 +429,7 @@
 						GameAction.setStatus('roll', true);
 						GameAction.setStatus('takeWorm', true);
 						GameAction.setStatus('freezeDice', false);
+						GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
 						PlayerNotification.setMessage('Please click "roll" to roll the dice or the worm you would like to take.');
 					}else{
 						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
