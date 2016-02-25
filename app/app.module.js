@@ -301,7 +301,7 @@
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
 		
-		var playerMessage = {info : 'Try To Collect All The Worms!  Click "Roll" to start!'};
+		var playerMessage = {info : 'Goal: Try To Collect All The Worms!  Click "Roll" to start!'};
 		
 		return {
 			message: playerMessage,
@@ -476,7 +476,7 @@
 						this.bunkPenalty();
 					}
 				}else if(GameAction.status.gameOver===false){
-					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group or take a worm, if possible.');
+					PlayerNotification.setMessage('You have already rolled, please freeze a dice number group.');
 				}
 			};
 			
@@ -496,7 +496,7 @@
 						if(FrozenDiceArray.frozenStatus.haveWorm){
 							GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
 						}
-						PlayerNotification.setMessage('Please click "roll" to roll the dice or the worm you would like to take.');
+						PlayerNotification.setMessage('Please click "roll", or click the worm you would like to take.');
 					}else{
 						PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 					}
@@ -515,6 +515,7 @@
 						GameAction.setStatus('freezeDice', false);
 						PlayerWormsArray.addWorm(wormValue);
 						GrillWormsArray.removeWormHighlight();
+						PlayerNotification.setMessage('Please roll the dice.');
 					}else{
 						PlayerNotification.setMessage('You cannot take that worm tile.');
 					}
