@@ -301,7 +301,7 @@
 
 	.factory("PlayerNotification", [function PlayerNotificationFactory(){
 		
-		var playerMessage = {info : 'Please click "roll" to roll the dice.'};
+		var playerMessage = {info : 'Try To Collect All The Worms!  Click "Roll" to start!'};
 		
 		return {
 			message: playerMessage,
