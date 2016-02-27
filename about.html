@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="pickominoGame">
+<head>
+	<meta charset="utf-8" />
+	<title>Angular Pickomino</title>
+	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
+	<link rel="stylesheet" type="text/css" href="assests/css/about.css">
+	<link rel="stylesheet" type="text/css" href="assests/css/main.css">
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="app/app.module.js"></script>	
+</head>
+<body>
+	<common-header></common-header>
+
+	<div id="About" class="jumbotron">
+		<div class="vertical-padding">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-6 panel about-text vcenter">
+					<h1>C. Andrew Menning</h1>
+					<h2><b>
+  						I began coding mainly as a means to conduct simulations of chemical reactions and quantum mechanics through my chemical engineering profession.  I have so thoroughly enjoyed and sought to combine science and computer science that I am interested in pursuing a more extensive software engineer profession.
+					</b></h2>
+				</div>
+				<div class="col-md-4">
+					<img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11010581_10153242770699146_1713665796628408143_o.jpg" class="smaller-image round-image"/>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid" id="Portfolio">
+	    <h2 class="text-center">						Portfolio					</h2>
+	    <div class="col-md-4">
+	      <h4 class="text-center"><b>						Digital Board Games Dev: </b></h4>
+	      <h4 class="text-center"><b>Pickomino online in AngularJS and stand-alone in Java</b></h4>
+	      <a href="/AngularJS_Pickomino_Project/InProgress/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/Pickomino-Game.png'></a>
+	      <p>
+	        As an avid euro board game enthusiast, I have driven my programming experience foward by converting some of my favorites into computer versions.
+	      </p>
+	    </div>
+	    <div class="col-md-4">
+	      <h4 class="text-center"><b>Professional Website Management:</b></h4>
+	      <h4 class="text-center"><b>CCP Webmaster</b></h4>
+	      <a href="http://catalysisclubphilly.org/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/CCP-Webmaster.png'></a>
+	      <p>
+	        The Catalysis Club of Philadelphia was founded in 1949 to promote the advancement of knowledge of the science of catalysis. As webmaster, I am in charge of updating the website with new content and increasing the social presence on Linkedin.
+	      </p>
+	    </div>
+	    <div class="col-md-4">
+	      <h4 class="text-center">						<b>Color Theory and Composition:</b></h4> 
+	      <h4 class="text-center"><b>DCAD and PAFA</b></h4>
+	      <img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/DSC00935.jpg'>
+	      <p>
+	        I have studied color thoery and composition through courses at Delaware College of Art and Design (DCAD) and Pennsylvania Academy of the Fine Arts (PAFA).  The above is a oil on canvas recreation I painted of Paul Cezanne's Ginger Jar.  I hope to use my knowledge of color theory and mixing to further improve the user interfaces I create.
+	      </p>
+	    </div>
+	</div>
+
+	<div id="Contact">
+		<div class="vertical-padding">
+			<h1 class='text-center' style="color:white"><b>Contact me</b></h1>
+			<div class='row'>
+				<div class='col-md-4'>
+					<button class='btn btn-block btn-primary contact-button' href='https://www.linkedin.com/pub/carl-andrew-menning/3a/417/74a' target='_blank'><i class="fa fa-linkedin"></i>     Linkedin</button>
+				</div>
+				<div class='col-md-4'>
+					<button class='btn btn-block btn-primary contact-button' href='https://github.com/metakata' target='_blank'><i class="fa fa-github"></i>     Github</button>
+				</div>
+				<div class='col-md-4'>
+					<button class='btn btn-block btn-primary' href='http://freecodecamp.com/metakata' target='_blank'><i class='glyphicon glyphicon-envelope'></i> <a href='mailto:email@email.com'></a>Email Me</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<common-footer></common-footer>
+	
+	<script src="node_modules/jquery/dist/jquery.js"></script>
+	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+	<script>
+		$(function() {
+			$('.nav-tabs a').click(function (e) {
+				e.preventDefault();
+				$(this).tab('show');
+			});
+		});
+	</script>		
+	
+</body>
