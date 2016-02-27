@@ -1,0 +1,64 @@
+
+body {
+  background: url('http://www.genealogyintime.com/GenealogyResources/Wallpaper/Brick-Wall-Images/images/02%20-%201740%20Swedish%20brick%20wall.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.vertical-padding {
+	margin-top: 150px;
+}
+
+.chalk {
+  font-family: Papyrus, fantasy;
+  font-style: normal;
+  font-variant: normal;
+  color: white;
+}
+
+#mainBox{
+  text-align:center;
+  height: 100%;
+}
+
+#mainBox:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -0.25em; 
+}
+
+#Quote_Home {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#Title h1 {
+  font-size: 80px;
+  margin: 30px;
+  text-align: center;
+}
+
+#QuoteButton {
+  font-size: 20px;
+  font-weight: bold;
+  width: 200px;
+  text-align: center;
+  margin: 0px auto;
+}
+
+#Quote_Box {
+  font-size: 50px;
+  text-align: center;
+  margin-top:30px;
+}
+
+#Author_Box {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: right;
+  margin: 20px;
+}
