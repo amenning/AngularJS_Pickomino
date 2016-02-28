@@ -3,6 +3,10 @@ body {
   background: #4C5769;
 }
 
+.vertical-padding {
+	margin-top: 50px;
+}
+
 .Tangerine {
   font-family: 'Tangerine', serif;
 }

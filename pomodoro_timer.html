@@ -16,52 +16,54 @@
 </head>
 <body>
 	<common-header></common-header>
-
-	<div class="container-fluid" id="wrapper">
-		<div class="Tangerine" id="TitleBox">
-			<h1 id="Title">Pomodoro Timer</h1>
-		</div>
-		<div class="container row-fluid" id="controlsWrapper">
-			<div class="col-xs-2"></div>
-			<div id="sessionLengthBox" class="col-xs-4">
-				<div id="sessionTitle">
-					<h3>Session Length</h3>
-				</div>
-				<div id="sessionControls" class="container-fluid row">
-					<div id="sessionLengthDecrease" class="col-xs-3">
-						<button class="btn btn-primary btn-block center-block" id="decreaseSessionBtn">-</button>
-					</div>
-					<div class="col-xs-6">
-						<h3 id="sessionLengthReadout">25 min</h3>
-					</div>
-					<div id="sessionLengthIncrease" class="col-xs-3">
-						<button class="btn btn-primary btn-block  center-block" id="increaseSessionBtn">+</button>
-					</div>
-				</div>
+	
+	<div class="vertical-padding">
+		<div class="container-fluid" id="wrapper">
+			<div class="Tangerine" id="TitleBox">
+				<h1 id="Title">Pomodoro Timer</h1>
 			</div>
-			<div id="breakLengthBox" class="col-xs-4">
-				<div id="breakTitle">
-					<h3>Break Length</h3>
+			<div class="container row-fluid" id="controlsWrapper">
+				<div class="col-xs-2"></div>
+				<div id="sessionLengthBox" class="col-xs-4">
+					<div id="sessionTitle">
+						<h3>Session Length</h3>
+					</div>
+					<div id="sessionControls" class="container-fluid row">
+						<div id="sessionLengthDecrease" class="col-xs-3">
+							<button class="btn btn-primary btn-block center-block" id="decreaseSessionBtn">-</button>
+						</div>
+						<div class="col-xs-6">
+							<h3 id="sessionLengthReadout">25 min</h3>
+						</div>
+						<div id="sessionLengthIncrease" class="col-xs-3">
+							<button class="btn btn-primary btn-block  center-block" id="increaseSessionBtn">+</button>
+						</div>
+					</div>
 				</div>
-				<div id="breakControls" class="container-fluid row">
-					<div id="breakLengthDecrease" class="col-xs-3">
-						<button class="btn btn-primary btn-block  center-block" id="decreaseBreakBtn">-</button>
+				<div id="breakLengthBox" class="col-xs-4">
+					<div id="breakTitle">
+						<h3>Break Length</h3>
 					</div>
-					<div class="col-xs-6">
-						<h3 id="breakLengthReadout">5 min</h3>
-					</div>
-					<div id="breakLengthIncrease" class="col-xs-3">
-						<button class="btn btn-primary btn-block center-block" id="increaseBreakBtn">+</button>
+					<div id="breakControls" class="container-fluid row">
+						<div id="breakLengthDecrease" class="col-xs-3">
+							<button class="btn btn-primary btn-block  center-block" id="decreaseBreakBtn">-</button>
+						</div>
+						<div class="col-xs-6">
+							<h3 id="breakLengthReadout">5 min</h3>
+						</div>
+						<div id="breakLengthIncrease" class="col-xs-3">
+							<button class="btn btn-primary btn-block center-block" id="increaseBreakBtn">+</button>
+						</div>
 					</div>
 				</div>
+				<div class="col-xs-2"></div>
 			</div>
-			<div class="col-xs-2"></div>
-		</div>
-		<div id="clockBox">
-			<canvas id="clockCanvas" width="300" height="300"></canvas>
-		</div>
-		<div id="resetBox">
-			<button class="btn btn-primary btn-block center-block" id="resetBtn">Reset</button>
+			<div id="clockBox">
+				<canvas id="clockCanvas" width="300" height="300"></canvas>
+			</div>
+			<div id="resetBox">
+				<button class="btn btn-primary btn-block center-block" id="resetBtn">Reset</button>
+			</div>
 		</div>
 	</div>
 	
