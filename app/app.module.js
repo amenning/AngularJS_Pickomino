@@ -13,7 +13,14 @@
 			restrict: 'E',
 			templateUrl: "common-footer.html"
 		};
-	})	
+	})
+	
+	.directive("gameHeader", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-header.html"
+		};
+	})			
 	
 	.factory("SetDiceImage", function SetDiceImageFactory(){
 		return {
