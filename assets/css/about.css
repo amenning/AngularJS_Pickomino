@@ -22,7 +22,7 @@
 }
 
 .vertical-padding{
-	padding-top: 200px;
+	padding-top: 150px;
 }
 
 .vcenter {
@@ -32,6 +32,17 @@
 .about-text {
 	height: 400px;
 	opacity: 0.6;
+}
+
+.skills-text {
+	height: 250px;
+	opacity: 0.6;
+	font-size: 24px;
+}
+
+.skills-text p{
+	font-size: 24px;
+	font-weight: bold;
 }
 
 body { 
