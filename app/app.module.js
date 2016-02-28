@@ -20,22 +20,22 @@
 			imagify: function(diceValue){
 				switch(diceValue){
 					case 1:
-						return 'assests/img/DiceFaceOne.png';
+						return 'assets/img/DiceFaceOne.png';
 						break;
 					case 2:
-						return 'assests/img/DiceFaceTwo.png';
+						return 'assets/img/DiceFaceTwo.png';
 						break;
 					case 3:
-						return 'assests/img/DiceFaceThree.png';
+						return 'assets/img/DiceFaceThree.png';
 						break;
 					case 4:
-						return 'assests/img/DiceFaceFour.png';
+						return 'assets/img/DiceFaceFour.png';
 						break;
 					case 5:
-						return 'assests/img/DiceFaceFive.png';
+						return 'assets/img/DiceFaceFive.png';
 						break;
 					case 6:
-						return 'assests/img/OneWormTile.png';
+						return 'assets/img/OneWormTile.png';
 						break;
 				};
 			}
@@ -50,25 +50,25 @@
 					case 22:
 					case 23:
 					case 24:
-						return 'assests/img/OneWormTile.png';
+						return 'assets/img/OneWormTile.png';
 						break;
 					case 25:
 					case 26:
 					case 27:
 					case 28:
-						return 'assests/img/TwoWormTile.png';
+						return 'assets/img/TwoWormTile.png';
 						break;
 					case 29:
 					case 30:
 					case 31:
 					case 32:
-						return 'assests/img/ThreeWormTile.png';
+						return 'assets/img/ThreeWormTile.png';
 						break;
 					case 33:
 					case 34:
 					case 35:
 					case 36:
-						return 'assests/img/FourWormTile.png';
+						return 'assets/img/FourWormTile.png';
 						break;
 				};
 			}
