@@ -267,7 +267,7 @@
 				freezeDice: false,
 				takeWorm: false,
 				bunk: false,
-				gameOver: true
+				gameOver: false
 			};
 			
 			return {
