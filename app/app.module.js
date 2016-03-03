@@ -313,7 +313,7 @@
 				bunk: false,
 				gameOver: false,
 				numPlayers: 1,
-				activePlayer: 1
+				activePlayer: 0
 			};
 			
 			return {
@@ -338,6 +338,19 @@
 					if(!canDiceFreeze){
 						gameActionStatus.bunk=true;
 					}
+				},
+				
+				switchPlayer: function(){
+					if(gameActionStatus.numPlayers>1){
+						switch(gameActionStatus.activePlayer){
+							case 0:
+								gameActionStatus.activePlayer = 1;
+								break;
+							case 1:
+								gameActionStatus.activePlayer = 0;
+								break;
+						}
+					}
 				}
 			};
 	}])		
@@ -356,10 +369,10 @@
 		};
 	}])	
 	
-	.factory("PlayerWormsArray", ['SetWormImage', 'GetWormType', function PlayerWromsFactory(SetWormImage, GetWormType){
-		var playerWormsArray = [ ];
+	.factory("PlayerWormsArray", ['SetWormImage', 'GetWormType', 'GameAction', function PlayerWromsFactory(SetWormImage, GetWormType, GameAction){
+		var playerWormsArray = [[],[]];
 		
-		var playerStatus = { total: 0 };
+		var playerStatus = [{ total: 0}, {total:0 }];
 		
 		return {
 			array: playerWormsArray,
@@ -368,14 +381,14 @@
 			
 			addWorm: function(wormValue){	
 				wormImage = SetWormImage.imagify(wormValue);
-				playerWormsArray.unshift({value: wormValue, image: wormImage});
-				playerStatus.total += GetWormType.amount(wormValue);
+				playerWormsArray[GameAction.status.activePlayer].unshift({value: wormValue, image: wormImage});
+				playerStatus[GameAction.status.activePlayer].total += GetWormType.amount(wormValue);
 			},
 			
 			removeBunkWorm: function(){
-				var wormValue = playerWormsArray[0].value;
-				playerWormsArray.shift();
-				playerStatus.total -= GetWormType.amount(wormValue);
+				var wormValue = playerWormsArray[GameAction.status.activePlayer][0].value;
+				playerWormsArray[GameAction.status.activePlayer].shift();
+				playerStatus[GameAction.status.activePlayer].total -= GetWormType.amount(wormValue);
 				return wormValue;
 			}
 		};
@@ -472,13 +485,13 @@
 	}])	
 	
 	.controller("PlayerOneWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
-		this.wormValues = PlayerWormsArray.array;
-		this.status = PlayerWormsArray.status;
+		this.wormValues = PlayerWormsArray.array[0];
+		this.status = PlayerWormsArray.status[0];
 	}])
 	
 	.controller("PlayerTwoWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
-		this.wormValues = PlayerWormsArray.array;
-		this.status = PlayerWormsArray.status;
+		this.wormValues = PlayerWormsArray.array[1];
+		this.status = PlayerWormsArray.status[1];
 	}])		
 	
 	.controller("ActionController", [
@@ -568,6 +581,7 @@
 						}else{
 							RandomDice.resetDice();
 							GameAction.setStatus('roll', true);
+							GameAction.switchPlayer();
 							PlayerNotification.setMessage('Please roll the dice.');
 						}
 					}else{
@@ -579,7 +593,7 @@
 			};
 			
 			this.bunkPenalty = function(){
-				if(PlayerWormsArray.array.length!==0){
+				if(PlayerWormsArray.array[GameAction.status.activePlayer].length!==0){
 					//return worm to grill
 					wormValue = PlayerWormsArray.removeBunkWorm();
 					//remove highest value worm from grill
@@ -592,6 +606,7 @@
 				GameAction.setStatus('takeWorm', false);
 				GameAction.setStatus('freezeDice', false);
 				GameAction.setStatus('bunk', false);
+				GameAction.switchPlayer();
 				PlayerNotification.setMessage('You can now reroll the dice.');
 			};
 		}
