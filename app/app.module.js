@@ -8,19 +8,62 @@
 		};
 	})
 	
+	.directive("gameHeader", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-header.html"
+		};
+	})
+	
+	.directive("gameBoard", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-board.html"
+		};
+	})	
+	
+	.directive("gameGrillWorms", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-grill-worms.html"
+		};
+	})		
+	
+	.directive("gamePlayerOptions", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-player-options.html"
+		};
+	})		
+
+	.directive("gameActiveDice", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-active-dice.html"
+		};
+	})		
+	
+	.directive("gameFrozenDice", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-frozen-dice.html"
+		};
+	})	
+	
+	.directive("gamePlayerWorms", function() {
+		return {
+			restrict: 'E',
+			templateUrl: "game-player-worms.html"
+		};
+	})			
+	
 	.directive("commonFooter", function() {
 		return {
 			restrict: 'E',
 			templateUrl: "common-footer.html"
 		};
 	})
-	
-	.directive("gameHeader", function() {
-		return {
-			restrict: 'E',
-			templateUrl: "game-header.html"
-		};
-	})			
+			
 	
 	.factory("SetDiceImage", function SetDiceImageFactory(){
 		return {
