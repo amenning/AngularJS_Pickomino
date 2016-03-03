@@ -1,139 +1,181 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="pickominoGame">
-<head>
-	<meta charset="utf-8" />
-	<title>Angular Pickomino</title>
-	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/about.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-	<script src="node_modules/angular/angular.js"></script>
-	<script src="app/app.module.js"></script>	
-	<script src="assets/js/directives/common-header.js"></script>
-	<script src="assets/js/directives/common-footer.js"></script>
-</head>
-<body>
-	<common-header></common-header>
-
-	<div id="About" class="jumbotron">
-		<div class="vertical-padding">
-			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-6 panel about-text vcenter">
-					<h1 class="text-center">C. Andrew Menning</h1>
-					<ul>
-						<li>Project Leader for Internal Safety Analysis Software Program at DuPont</li>
-						<li>Scripting and Programming for Quantum Simulations on HPC</li>
-						<li>Volunteer Webmaster for 66 year old Science Organization</li>
-						<li>Demonstrated Documentation: 17 publications</li>
-						<li>Demonstrated Focus on IP: 11 patents</li>
-						<li>Demonstrated Leadership: 3 Elected Positions</li>
-					</ul>
+	<head>
+		<meta charset="utf-8" />
+		<title>Angular Pickomino</title>
+		<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="node_modules/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/about.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		<script src="node_modules/angular/angular.js"></script>
+		<script src="app/app.module.js"></script>	
+		<script src="assets/js/directives/common-header.js"></script>
+		<script src="assets/js/directives/common-footer.js"></script>
+	</head>
+	<body>
+		<common-header></common-header>
+	
+		<div id="About" class="jumbotron">
+			<div class="vertical-padding">
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-6 panel about-text vcenter">
+						<h1 class="text-center">C. Andrew Menning</h1>
+						<ul>
+							<li>Project Leader for Internal Safety Analysis Software Program at DuPont</li>
+							<li>Scripting and Programming for Quantum Simulations on HPC</li>
+							<li>Volunteer Webmaster for 66 year old Science Organization</li>
+							<li>Demonstrated Documentation: 17 publications</li>
+							<li>Demonstrated Focus on IP: 11 patents</li>
+							<li>Demonstrated Leadership: 3 Elected Positions</li>
+						</ul>
+					</div>
+					<div class="col-md-4">
+						<img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11010581_10153242770699146_1713665796628408143_o.jpg" class="smaller-image round-image"/>
+					</div>
+					<div class="col-md-1"></div>
 				</div>
-				<div class="col-md-4">
-					<img src="https://scontent.xx.fbcdn.net/hphotos-xpf1/t31.0-8/11010581_10153242770699146_1713665796628408143_o.jpg" class="smaller-image round-image"/>
-				</div>
-				<div class="col-md-1"></div>
-			</div>
-			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="col-md-10 panel vcenter skills-text">
-					<h2 class="text-center underline">Skills</h2>
-					<div class="row">
-						<div class="col-md-4 text-center">
-							<p>Front-end</p>
-							<ul class="list-unstyled">
-								<li>jQuery</li>
-								<li>AngularJS</li>
-								<li>Foundation</li>
-								<li>Bootstrap</li>
-								<li>Font-awesome</li>
-								<li>Wordpress</li>
-							</ul>
-						</div>
-						<div class="col-md-4 text-center">
-							<p>Back-end</p>
-							<ul class="list-unstyled">
-								<li>NodeJS</li>
-								<li>PHP</li>
-								<li>Ruby &amp; Ruby on Rails</li>
-								<li>Java</li>
-							</ul>
-						</div>
-						<div class="col-md-4 text-center">
-							<p>Database</p>
-							<ul class="list-unstyled">
-								<li>SQL</li>
-								<li>MySQL</li>
-								<li>SQLite</li>
-								<li>MongoDB</li>
-								<li>Redis</li>
-							</ul>
+				<div class="row">
+					<div class="col-md-1"></div>
+					<div class="col-md-10 panel vcenter skills-text">
+						<h2 class="text-center underline">Skills</h2>
+						<div class="row">
+							<div class="col-md-4 text-center">
+								<p>Front-end</p>
+								<ul class="list-unstyled">
+									<li>jQuery</li>
+									<li>AngularJS</li>
+									<li>Foundation</li>
+									<li>Bootstrap</li>
+									<li>Font-awesome</li>
+									<li>Wordpress</li>
+								</ul>
+							</div>
+							<div class="col-md-4 text-center">
+								<p>Back-end</p>
+								<ul class="list-unstyled">
+									<li>NodeJS</li>
+									<li>PHP</li>
+									<li>Ruby &amp; Ruby on Rails</li>
+									<li>Java</li>
+								</ul>
+							</div>
+							<div class="col-md-4 text-center">
+								<p>Database</p>
+								<ul class="list-unstyled">
+									<li>SQL</li>
+									<li>MySQL</li>
+									<li>SQLite</li>
+									<li>MongoDB</li>
+									<li>Redis</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-1"></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="container-fluid" id="Portfolio">
-	    <h2 class="text-center">						Portfolio					</h2>
-	    <div class="col-md-4">
-	      <h4 class="text-center"><b>						Digital Board Games Dev: </b></h4>
-	      <h4 class="text-center"><b>Pickomino online in AngularJS and stand-alone in Java</b></h4>
-	      <a href="/AngularJS_Pickomino_Project/InProgress/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/Pickomino-Game.png'></a>
-	      <p>
-	        As an avid euro board game enthusiast, I have driven my programming experience foward by converting some of my favorites into computer versions.
-	      </p>
-	    </div>
-	    <div class="col-md-4">
-	      <h4 class="text-center"><b>Professional Website Management:</b></h4>
-	      <h4 class="text-center"><b>CCP Webmaster</b></h4>
-	      <a href="http://catalysisclubphilly.org/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/CCP-Webmaster.png'></a>
-	      <p>
-	        The Catalysis Club of Philadelphia was founded in 1949 to promote the advancement of knowledge of the science of catalysis. As webmaster, I am in charge of updating the website with new content and increasing the social presence on Linkedin.
-	      </p>
-	    </div>
-	    <div class="col-md-4">
-	      <h4 class="text-center">						<b>Color Theory and Composition:</b></h4> 
-	      <h4 class="text-center"><b>DCAD and PAFA</b></h4>
-	      <img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/DSC00935.jpg'>
-	      <p>
-	        I have studied color thoery and composition through courses at Delaware College of Art and Design (DCAD) and Pennsylvania Academy of the Fine Arts (PAFA).  The above is a oil on canvas recreation I painted of Paul Cezanne's Ginger Jar.  I hope to use my knowledge of color theory and mixing to further improve the user interfaces I create.
-	      </p>
-	    </div>
-	</div>
-
-	<div id="Contact">
-		<div class="vertical-padding">
-			<h1 class='text-center' style="color:white"><b>Contact me</b></h1>
-			<div class='row'>
-				<div class='col-md-4'>
-					<a href='https://www.linkedin.com/pub/carl-andrew-menning/3a/417/74a' target='_blank'><button class='btn btn-block btn-primary contact-button'><i class="fa fa-linkedin"></i>     LinkedIn</button></a>
-				</div>
-				<div class='col-md-4'>
-					<a href='https://github.com/metakata' target='_blank'><button class='btn btn-block btn-primary contact-button'><i class="fa fa-github"></i>     Github</button></a>
-				</div>
-				<div class='col-md-4'>
-					<a href='mailto:menning23@gmail.com'><button class='btn btn-block btn-primary contact-button'><i class='fa fa-envelope'></i>        Email Me</button></a>
+					<div class="col-md-1"></div>
 				</div>
 			</div>
 		</div>
-	</div>
 	
+		<div class="container-fluid" id="Portfolio">
+		    <h2 class="text-center">						Portfolio					</h2>
+		    <div class="col-md-4">
+		      <h4 class="text-center"><b>						Digital Board Games Dev: </b></h4>
+		      <h4 class="text-center"><b>Pickomino online in AngularJS and stand-alone in Java</b></h4>
+		      <a href="/AngularJS_Pickomino_Project/InProgress/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/Pickomino-Game.png'></a>
+		      <p>
+		        As an avid euro board game enthusiast, I have driven my programming experience foward by converting some of my favorites into computer versions.
+		      </p>
+		    </div>
+		    <div class="col-md-4">
+		      <h4 class="text-center"><b>Professional Website Management:</b></h4>
+		      <h4 class="text-center"><b>CCP Webmaster</b></h4>
+		      <a href="http://catalysisclubphilly.org/"><img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/CCP-Webmaster.png'></a>
+		      <p>
+		        The Catalysis Club of Philadelphia was founded in 1949 to promote the advancement of knowledge of the science of catalysis. As webmaster, I am in charge of updating the website with new content and increasing the social presence on Linkedin.
+		      </p>
+		    </div>
+		    <div class="col-md-4">
+		      <h4 class="text-center">						<b>Color Theory and Composition:</b></h4> 
+		      <h4 class="text-center"><b>DCAD and PAFA</b></h4>
+		      <img class='img-responsive smaller-image' src='http://metakata.altervista.org/wordpress/wp-content/uploads/2015/08/DSC00935.jpg'>
+		      <p>
+		        I have studied color thoery and composition through courses at Delaware College of Art and Design (DCAD) and Pennsylvania Academy of the Fine Arts (PAFA).  The above is a oil on canvas recreation I painted of Paul Cezanne's Ginger Jar.  I hope to use my knowledge of color theory and mixing to further improve the user interfaces I create.
+		      </p>
+		    </div>
+		</div>
 	
-	<common-footer></common-footer>
-	
-	<script src="node_modules/jquery/dist/jquery.js"></script>
-	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
-	<script>
-		$(function() {
-			$('.nav-tabs a').click(function (e) {
-				e.preventDefault();
-				$(this).tab('show');
+		<div id="Contact">
+			<div class="vertical-padding">
+				<h1 class='text-center' style="color:white"><b>Contact me</b></h1>
+				<div class='row'>
+					<div class='col-md-4'>
+						<a href='https://www.linkedin.com/pub/carl-andrew-menning/3a/417/74a' target='_blank'><button class='btn btn-block btn-primary contact-button'><i class="fa fa-linkedin"></i>     LinkedIn</button></a>
+					</div>
+					<div class='col-md-4'>
+						<a href='https://github.com/metakata' target='_blank'><button class='btn btn-block btn-primary contact-button'><i class="fa fa-github"></i>     Github</button></a>
+					</div>
+					<div class='col-md-4'>
+						<a href='mailto:menning23@gmail.com'><button class='btn btn-block btn-primary contact-button'><i class='fa fa-envelope'></i>        Email Me</button></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<common-footer></common-footer>
+		
+
+		<!-- Vendors -->
+		<script src="node_modules/jquery/dist/jquery.js"></script>
+		<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="node_modules/angular/angular.js"></script>
+		
+		<script src="app/app.module.js"></script>
+		
+		<!-- Directives -->
+		<script src="assets/js/directives/common-header.js"></script>
+		<script src="assets/js/directives/game-header.js"></script>
+		<script src="assets/js/directives/game-board.js"></script>
+		<script src="assets/js/directives/game-grill-worms.js"></script>
+		<script src="assets/js/directives/game-player-options.js"></script>
+		<script src="assets/js/directives/game-active-dice.js"></script>
+		<script src="assets/js/directives/game-frozen-dice.js"></script>
+		<script src="assets/js/directives/game-player-worms.js"></script>
+		<script src="assets/js/directives/common-footer.js"></script>
+		
+		<!-- Services -->
+		<script src="assets/js/services/set-dice-image.js"></script>
+		<script src="assets/js/services/set-worm-image.js"></script>
+		<script src="assets/js/services/get-worm-type.js"></script>
+		<script src="assets/js/services/active-dice-array.js"></script>
+		<script src="assets/js/services/frozen-dice-array.js"></script>
+		<script src="assets/js/services/grill-worms-array.js"></script>
+		<script src="assets/js/services/game-action.js"></script>
+		<script src="assets/js/services/player-notification.js"></script>
+		<script src="assets/js/services/player-worms-array.js"></script>
+		<script src="assets/js/services/check-valid-dice-freeze.js"></script>
+		<script src="assets/js/services/check-valid-worm-take.js"></script>
+		<script src="assets/js/services/check-valid-worm-steal.js"></script>
+		<script src="assets/js/services/active-dice-filter.js"></script>
+		<script src="assets/js/services/random-dice.js"></script>
+		
+		<!-- Controllers -->
+		<script src="assets/js/controllers/game-grill-worms-controller.js"></script>
+		<script src="assets/js/controllers/game-active-dice-controller.js"></script>
+		<script src="assets/js/controllers/game-frozen-dice-controller.js"></script>
+		<script src="assets/js/controllers/game-player-notification-controller.js"></script>
+		<script src="assets/js/controllers/game-player-one-worms-controller.js"></script>
+		<script src="assets/js/controllers/game-player-two-worms-controller.js"></script>
+		<script src="assets/js/controllers/game-action-controller.js"></script>
+		<script>
+			$(function() {
+				$('.nav-tabs a').click(function (e) {
+					e.preventDefault();
+					$(this).tab('show');
+				});
 			});
-		});
-	</script>		
-	
-</body>
+		</script>		
+		
+	</body>
+</html>
