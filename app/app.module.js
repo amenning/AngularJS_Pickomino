@@ -617,9 +617,9 @@
 				}
 			};
 			
-			this.stealWorm = function(wormValue){				
-				if(GameAction.status.takeWorm===true){
-					if(CheckValidWormSteal.validate(wormValue)){
+			this.stealWorm = function(wormValue, fromPlayer, index){				
+				if(GameAction.status.takeWorm===true && fromPlayer!==GameAction.status.activePlayer){
+					if(CheckValidWormSteal.validate(wormValue)  && index===0){
 						PlayerWormsArray.removeStolenWorm(wormValue);
 						PlayerWormsArray.addWorm(wormValue);
 						GrillWormsArray.removeWormHighlight();
@@ -632,8 +632,6 @@
 					}else{
 						PlayerNotification.setMessage('You cannot take that worm tile.');
 					}
-				}else if(GameAction.status.roll===true){
-					PlayerNotification.setMessage('You need to reroll the dice.');
 				}
 			};			
 			
