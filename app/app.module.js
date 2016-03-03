@@ -263,35 +263,21 @@
 		function GameActionFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, CheckValidDiceFreeze, CheckValidWormTake){
 		
 			var gameActionStatus = {
-				roll: true,
+				gameSetup: true,
+				roll: false,
 				freezeDice: false,
 				takeWorm: false,
 				bunk: false,
-				gameOver: false
+				gameOver: false,
+				numPlayers: 1,
+				activePlayer: 1
 			};
 			
 			return {
 				status: gameActionStatus,
 			
 				setStatus: function(action, status){
-					switch(action){
-						case 'roll':
-							gameActionStatus.roll = status;
-							break;
-						case 'freezeDice':
-							gameActionStatus.freezeDice = status;
-							break;	
-						case 'takeWorm':
-							gameActionStatus.takeWorm = status;
-							break;	
-						case 'bunk':
-							gameActionStatus.bunk = status;
-							break;
-						case 'gameOver':
-							gameActionStatus.gameOver = status;
-							break;		
-					}
-					
+					gameActionStatus[action] = status;		
 				},
 				
 				checkMoveAvailable: function(){
@@ -442,10 +428,15 @@
 		this.messageText = PlayerNotification.message;
 	}])	
 	
-	.controller("PlayerWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
+	.controller("PlayerOneWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
 		this.wormValues = PlayerWormsArray.array;
 		this.status = PlayerWormsArray.status;
-	}])	
+	}])
+	
+	.controller("PlayerTwoWormsController", ['PlayerWormsArray', function(PlayerWormsArray){
+		this.wormValues = PlayerWormsArray.array;
+		this.status = PlayerWormsArray.status;
+	}])		
 	
 	.controller("ActionController", [
 		'SetDiceImage', 
@@ -465,6 +456,12 @@
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			this.gameStatus = GameAction.status;
+			
+			this.setPlayers = function(numPlayers){
+				GameAction.setStatus('numPlayers', numPlayers);
+				GameAction.setStatus('roll', true);
+				GameAction.setStatus('gameSetup', false);
+			};
 			
 			this.rollDice = function (){
 				if(GameAction.status.roll===true){

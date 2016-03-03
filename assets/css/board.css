@@ -63,6 +63,14 @@
    min-height: 130px;
    padding: 5px;
  }
+ .twoPlayerWidth{
+ 	width: 49%;
+ }
+ .twoPlayerContainer{
+ 	display: flex;
+ 	justify-content: space-around;
+    flex-wrap: wrap;
+ }
  .worm{
    flex: 0 0 auto;
    background: white;

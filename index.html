@@ -34,7 +34,13 @@
 						<span class = 'titles' ng-class="{ 'redText' : action.gameStatus.bunk }">{{notice.messageText.info}}</span>
 					</div>	
 					<div class = 'playeroptions outset'>
-						<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.bunk">
+						<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(1)" ng-show="action.gameStatus.gameSetup">
+							Solo Play
+						</button>
+						<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(2)" ng-show="action.gameStatus.gameSetup">
+							Two Players
+						</button>
+						<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.gameSetup || action.gameStatus.bunk || action.gameStatus.gameOver">
 							Roll
 						</button>
 						<button class = 'buttons inset bunkButtonHighlight' ng-show="action.gameStatus.bunk" ng-click="action.bunkPenalty()">
@@ -68,14 +74,29 @@
 					</div>
 				</div>
 				<br/>
-				<div ng-controller="PlayerWormsController as playerWorms">
-					<div class = 'titles-box'>
-						<span class = 'titles'>Player's Worms ( <ng-pluralize count=playerWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
-					</div>					
-					<div class = 'playerWorms inset'>
-						<div class = 'worm inset' ng-repeat="playerWorm in playerWorms.wormValues">
-							<p>{{playerWorm.value}}</p>
-							<img ng-src="{{playerWorm.image}}" />
+				<div ng-class="{'row-fluid twoPlayerContainer' : action.gameStatus.numPlayers===2 }">
+					<div ng-controller="PlayerOneWormsController as playerOneWorms" ng-class="{ 'twoPlayerWidth' : action.gameStatus.numPlayers===2 }">
+						<div class = 'titles-box'>
+							<span class = 'titles' ng-hide="action.gameStatus.numPlayers===2">Player's Worms ( <ng-pluralize count=playerOneWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+							<span class = 'titles' ng-hide="action.gameStatus.numPlayers===1">Player 1's Worms ( <ng-pluralize count=playerOneWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+						</div>					
+						<div class = 'playerWorms inset'>
+							<div class = 'worm inset' ng-repeat="playerOneWorm in playerOneWorms.wormValues">
+								<p>{{playerOneWorm.value}}</p>
+								<img ng-src="{{playerOneWorm.image}}" />
+							</div>
+						</div>
+					</div>
+					<br/>
+					<div ng-controller="PlayerTwoWormsController as playerTwoWorms" ng-hide="action.gameStatus.numPlayers===1" class="twoPlayerWidth">
+						<div class = 'titles-box'>
+							<span class = 'titles'>Player 2's Worms ( <ng-pluralize count=playerTwoWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
+						</div>					
+						<div class = 'playerWorms inset'>
+							<div class = 'worm inset' ng-repeat="playerTwoWorm in playerTwoWorms.wormValues">
+								<p>{{playerTwoWorm.value}}</p>
+								<img ng-src="{{playerTwoWorm.image}}" />
+							</div>
 						</div>
 					</div>
 				</div>

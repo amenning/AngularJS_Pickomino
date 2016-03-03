@@ -32,12 +32,17 @@
 }
 
 .about-text {
-	height: 400px;
+	min-height: 400px;
 	opacity: 0.6;
 }
 
+.about-text li {
+	margin-top: 15px;
+	font-size: 24px;
+}
+
 .skills-text {
-	height: 350px;
+	min-height: 350px;
 	opacity: 0.6;
 	font-size: 24px;
 }
@@ -61,7 +66,7 @@ background: url('http://dr-building.pt/wp-content/uploads/2013/04/Architecture-B
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-height: 900px;
+min-height: 900px;
 color: black;
 }
 
@@ -72,7 +77,7 @@ background: url('http://pre10.deviantart.net/e084/th/pre/f/2013/136/b/7/metal_te
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-height:900px;
+min-height:900px;
 margin: 0px;
 }
 
@@ -83,7 +88,7 @@ color:white;
 -moz-background-size: cover;
 -o-background-size: cover;
 background-size: cover;
-height:600px;
+min-height:600px;
 margin-top: -20px;
 }
 
