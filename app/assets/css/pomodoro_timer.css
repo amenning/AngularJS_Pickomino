@@ -1,0 +1,93 @@
+
+body {
+  background: #4C5769;
+}
+
+.vertical-padding {
+	margin-top: 50px;
+}
+
+.Tangerine {
+  font-family: 'Tangerine', serif;
+}
+
+#wrapper {
+  margin:auto;
+}
+
+#Title {
+  text-align: center;
+  color: #C2B8B0;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+#breakLengthBox {}
+
+#breakControls {}
+
+#breakControls button {
+  margin: 20px auto;
+}
+
+#breakControls h3 {
+  margin: 14px auto;
+}
+
+#breakLengthBox h3 {
+  text-align: center;
+  padding: 10px;
+  color: #C2B8B0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#breakLengthReadout {}
+
+#breakLengthIncrease {}
+
+#breakLengthDecrease {}
+
+#sessionLengthBox {}
+
+#sessionLengthBox h3 {
+  text-align: center;
+  padding: 10px;
+  color: #C2B8B0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#sessionControls {}
+
+#sessionControls button {
+  margin: 20px auto;
+}
+
+#sessionControls h3 {
+  margin: 14px auto;
+}
+
+#sessionLengthIncrease {}
+
+#sessionLengthDecrease {}
+
+#controlsWrapper {
+  margin: auto;
+}
+
+#clockBox {
+  height: 320px;
+  width: 320px;
+  margin: auto;
+}
+
+#clockCanvas {
+  margin: 8px;
+}
+
+#resetBox {
+  height: 40px;
+  width: 300px;
+  margin: auto;
+}
