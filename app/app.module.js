@@ -313,7 +313,8 @@
 				bunk: false,
 				gameOver: false,
 				numPlayers: 1,
-				activePlayer: 0
+				activePlayer: 0,
+				nonActivePlayer: 1
 			};
 			
 			return {
@@ -345,9 +346,11 @@
 						switch(gameActionStatus.activePlayer){
 							case 0:
 								gameActionStatus.activePlayer = 1;
+								gameActionStatus.nonActivePlayer = 0;
 								break;
 							case 1:
 								gameActionStatus.activePlayer = 0;
+								gameActionStatus.nonActivePlayer = 1;
 								break;
 						}
 					}
@@ -372,7 +375,7 @@
 	.factory("PlayerWormsArray", ['SetWormImage', 'GetWormType', 'GameAction', function PlayerWromsFactory(SetWormImage, GetWormType, GameAction){
 		var playerWormsArray = [[],[]];
 		
-		var playerStatus = [{ total: 0}, {total:0 }];
+		var playerStatus = [{total: 0}, {total: 0}];
 		
 		return {
 			array: playerWormsArray,
@@ -390,7 +393,15 @@
 				playerWormsArray[GameAction.status.activePlayer].shift();
 				playerStatus[GameAction.status.activePlayer].total -= GetWormType.amount(wormValue);
 				return wormValue;
+			},
+			
+			removeStolenWorm: function(){
+				var wormValue = playerWormsArray[GameAction.status.nonActivePlayer][0].value;
+				playerWormsArray[GameAction.status.nonActivePlayer].shift();
+				playerStatus[GameAction.status.nonActivePlayer].total -= GetWormType.amount(wormValue);
+				return wormValue;
 			}
+			
 		};
 	}])	
 	
@@ -409,9 +420,8 @@
 	
 	.factory("CheckValidWormTake", [
 		'$filter', 
-		'GrillWormsArray',
 		'FrozenDiceArray',
-		function CheckValidWormTakeFactory($filter, GrillWormsArray, FrozenDiceArray){
+		function CheckValidWormTakeFactory($filter, FrozenDiceArray){
 			return {
 				validate: function(wormValue){
 					var enoughDiceValue = (wormValue <= FrozenDiceArray.frozenStatus.sum);
@@ -421,6 +431,20 @@
 			};
 		}
 	])	
+	
+	.factory("CheckValidWormSteal", [
+		'$filter', 
+		'FrozenDiceArray',
+		function CheckValidWormTakeFactory($filter, FrozenDiceArray){
+			return {
+				validate: function(wormValue){
+					var enoughDiceValue = (wormValue === FrozenDiceArray.frozenStatus.sum);
+					var foundFrozenWormDie = $filter('filter')(FrozenDiceArray.array, {value: 6}, true);					
+					return (enoughDiceValue && foundFrozenWormDie);				
+				}
+			};
+		}
+	])		
 	
 	.factory("ActiveDiceFilter", [
 		'$filter', 
@@ -499,6 +523,7 @@
 		'SetWormImage',
 		'CheckValidDiceFreeze', 
 		'CheckValidWormTake',
+		'CheckValidWormSteal',
 		'ActiveDiceFilter', 
 		'ActiveDiceArray', 
 		'FrozenDiceArray',
@@ -508,7 +533,7 @@
 		'RandomDice',
 		'GameAction',
 		'$scope',
-		function(SetDiceImage, SetWormImage, CheckValidDiceFreeze, CheckValidWormTake, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
+		function(SetDiceImage, SetWormImage, CheckValidDiceFreeze, CheckValidWormTake, CheckValidWormSteal, ActiveDiceFilter, ActiveDiceArray, FrozenDiceArray, GrillWormsArray, PlayerNotification, PlayerWormsArray, RandomDice, GameAction, $scope){
 			this.activeDice = ActiveDiceArray.array;
 			this.frozenDice = FrozenDiceArray.array;
 			this.gameStatus = GameAction.status;
@@ -591,6 +616,26 @@
 					PlayerNotification.setMessage('You need to reroll the dice.');
 				}
 			};
+			
+			this.stealWorm = function(wormValue){				
+				if(GameAction.status.takeWorm===true){
+					if(CheckValidWormSteal.validate(wormValue)){
+						PlayerWormsArray.removeStolenWorm(wormValue);
+						PlayerWormsArray.addWorm(wormValue);
+						GrillWormsArray.removeWormHighlight();
+						GameAction.setStatus('takeWorm', false);
+						GameAction.setStatus('freezeDice', false);
+						RandomDice.resetDice();
+						GameAction.setStatus('roll', true);
+						GameAction.switchPlayer();
+						PlayerNotification.setMessage('Please roll the dice.');
+					}else{
+						PlayerNotification.setMessage('You cannot take that worm tile.');
+					}
+				}else if(GameAction.status.roll===true){
+					PlayerNotification.setMessage('You need to reroll the dice.');
+				}
+			};			
 			
 			this.bunkPenalty = function(){
 				if(PlayerWormsArray.array[GameAction.status.activePlayer].length!==0){

@@ -5,7 +5,7 @@
 			<span class = 'titles' ng-hide="action.gameStatus.numPlayers===1">Player 1's Worms ( <ng-pluralize count=playerOneWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
 		</div>					
 		<div class = 'playerWorms inset'>
-			<div class = 'worm inset' ng-repeat="playerOneWorm in playerOneWorms.wormValues">
+			<div class = 'worm inset' ng-repeat="playerOneWorm in playerOneWorms.wormValues" ng-class="{ 'activeHighlight' : notice.frozenStatus.sum===playerOneWorm.value && gameAction.status.activePlayer!==0 }" ng-click="action.stealWorm(playerOneWorm.value)">
 				<p>{{playerOneWorm.value}}</p>
 				<img ng-src="{{playerOneWorm.image}}" />
 			</div>
@@ -17,7 +17,7 @@
 			<span class = 'titles'>Player 2's Worms ( <ng-pluralize count=playerTwoWorms.status.total when="{'1': '1 Worm', 'other': '{} Worms'}"></ng-pluralize> )</span>
 		</div>					
 		<div class = 'playerWorms inset'>
-			<div class = 'worm inset' ng-repeat="playerTwoWorm in playerTwoWorms.wormValues">
+			<div class = 'worm inset' ng-repeat="playerTwoWorm in playerTwoWorms.wormValues" ng-class="{ 'activeHighlight' : notice.frozenStatus.sum===playerTwoWorm.value && gameAction.status.activePlayer!==1 }" ng-click="action.stealWorm(playerTwoWorm.value)">
 				<p>{{playerTwoWorm.value}}</p>
 				<img ng-src="{{playerTwoWorm.image}}" />
 			</div>
