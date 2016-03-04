@@ -1,6 +1,10 @@
 <div>
 	<div class = 'titles-box'>
-		<span class = 'titles' ng-class="{ 'redText' : action.gameStatus.bunk }"><span ng-hide="action.gameStatus.numPlayers===1 || action.gameStatus.gameOver">Player {{action.gameStatus.activePlayer+1}}: </span>{{notice.messageText.info}}</span>
+		<span class = 'titles' ng-class="{ 'redText' : action.gameStatus.bunk }">
+			<span ng-hide="action.gameStatus.numPlayers===1 || action.gameStatus.gameOver">
+				Player {{action.gameStatus.activePlayer+1}}: 
+			</span>{{notice.messageText.info}}
+		</span>
 	</div>	
 	<div class = 'playeroptions outset'>
 		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(1)" ng-show="action.gameStatus.gameSetup">
