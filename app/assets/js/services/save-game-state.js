@@ -1,6 +1,6 @@
 angular.module('pickominoGame')				
 
-.factory("SaveGameState", [
+.factory("GameState", [
 	'FrozenDiceArray', 
 	'ActiveDiceArray', 
 	'GrillWormsArray',
@@ -10,6 +10,7 @@ angular.module('pickominoGame')
 	function SaveGameStateFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, GameAction, PlayerNotification, PlayerWormsArray){
 	
 		var gameState = { 
+							gameID: null,
 							gameStatus: GameAction.status,
 							grillWorms: GrillWormsArray.array,
 							deadGrillWorms: GrillWormsArray.deadArray,
@@ -22,8 +23,20 @@ angular.module('pickominoGame')
 		   				};
 		
 		return {
-			saveStatus: function(){
+			newGame: function(){
+				
+			},
+			
+			save: function(){
 				console.log(gameState);
+			},
+			
+			load: function(){
+				
+			},
+			
+			clear: function(){
+				
 			}
 		};
 }]);		

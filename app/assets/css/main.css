@@ -12,8 +12,8 @@ body {
 }
 .footer {
   position: absolute;
-  bottom: 0;
   width: 100%;
+  bottom: 0;
   /* Set the fixed height of the footer here */
   height: 220px;
   background-color: #333;
