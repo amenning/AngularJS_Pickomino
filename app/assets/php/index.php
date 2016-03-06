@@ -13,7 +13,7 @@ if(loggedin()){
 </div>
 
 <?php
-header('Location: /AngularJS_Pickomino_Project/InProgress/pickomino.html');
+header('Location: /AngularJS_Pickomino_Project/InProgress/pickomino.php');
 
 }else{
 	include 'loginform.inc.php';
