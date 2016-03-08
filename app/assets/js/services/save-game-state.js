@@ -7,7 +7,8 @@ angular.module('pickominoGame')
 	'GameAction',
 	'PlayerNotification',
 	'PlayerWormsArray',
-	function SaveGameStateFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, GameAction, PlayerNotification, PlayerWormsArray){
+	'$http',
+	function SaveGameStateFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, GameAction, PlayerNotification, PlayerWormsArray, $http){
 	
 		var gameState = { 
 							gameID: null,
@@ -29,6 +30,11 @@ angular.module('pickominoGame')
 			
 			save: function(){
 				console.log(gameState);
+				
+				return $http.post("app/assets/php/game_state.php", gameState)
+					.success(function(data){
+						console.log(data);
+					});
 			},
 			
 			load: function(){
