@@ -20,7 +20,7 @@ if(loggedin()){
 </head>
 <body>
 	<div style="text-align: center; margin: auto; padding: 10px;">
-	 Welcome <?php echo $firstname.' '.$lastname; ?>, <a href="logout.php">Log out</a>
+	 Welcome <?php echo $firstname.' '.$lastname; ?>, <a href="app/assets/php/logout.php">Log out</a>
 	</div>
 	<game-header></game-header>
 	

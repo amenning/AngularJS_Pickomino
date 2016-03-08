@@ -10,16 +10,15 @@ $request = json_decode($postdata);
 $grillWorms = $request->grillWorms;
 $activeDice = $request->activeDice;
 $frozenDice = $request->frozenDice;
+$created_at = time();
 
 if(isset($grillWorms) && isset($activeDice) && isset($frozenDice)){
-	echo "test";
-	$query_save_game_state="INSERT INTO `".$mySQL_db_table."` VALUES('','".mysql_real_escape_string(serialize($grillWorms))."','".mysql_real_escape_string(serialize($activeDice))."','".mysql_real_escape_string(serialize($frozenDice))."')";
+	$query_save_game_state="INSERT INTO `".$mySQL_db_table."` VALUES('','".mysql_real_escape_string(serialize($grillWorms))."','".mysql_real_escape_string(serialize($activeDice))."','".mysql_real_escape_string(serialize($frozenDice))."','".mysql_real_escape_string($created_at)."')";
 	if(@$query_save_game_state_run=mysql_query($query_save_game_state)){
-		echo "save succeeded";
-		#$query_user_id="SELECT `id` FROM `".$mySQL_db_table."` WHERE `username`='".mysql_real_escape_string($username)."'";
-		#$query_user_id_run=mysql_query($query_user_id);
-		#$user_id = mysql_result($query_user_id_run, 0, 'id');
-		#$_SESSION['user_id']=$user_id;
+		$query_game_state_id="SELECT `id` FROM `".$mySQL_db_table."` WHERE `created_at`='".mysql_real_escape_string($created_at)."'";
+		$query_game_state_id_run=mysql_query($query_game_state_id);
+		echo $game_state_id = mysql_result($query_game_state_id_run, 0, 'id');
+		$_SESSION['game_state_id']=$game_state_id;
 	}
 }
 ?>
