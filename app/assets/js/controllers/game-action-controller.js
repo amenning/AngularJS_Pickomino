@@ -25,6 +25,7 @@ angular.module('pickominoGame')
 			GameAction.setStatus('numPlayers', numPlayers);
 			GameAction.setStatus('roll', true);
 			GameAction.setStatus('gameSetup', false);
+			GameState.newGame();
 			GameState.save();
 		};
 		

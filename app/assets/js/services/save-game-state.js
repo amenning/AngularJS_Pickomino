@@ -27,6 +27,13 @@ angular.module('pickominoGame')
 		return {
 			newGame: function(){
 				//Set new game ID
+				console.log(gameState);
+				
+				return $http.post("app/assets/php/new_game.php", gameState)
+					.success(function(data){
+						console.log(data)
+						gameState.gameID = data;
+					});
 			},
 			
 			save: function(){
