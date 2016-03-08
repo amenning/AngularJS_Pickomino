@@ -8,7 +8,8 @@ if(loggedin()){
 	$lastname = getuserfield('lastname');
 		
 ?>
-
+<!DOCTYPE html>
+<html lang="en" ng-app="pickominoGame">
 <head>
 	<meta charset="utf-8" />
 	<title>Angular Pickomino</title>
@@ -17,10 +18,10 @@ if(loggedin()){
 	<link rel="stylesheet" type="text/css" href="app/assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="app/assets/css/board.css">
 </head>
-<body ng-app="pickominoGame">
-<div style="text-align: center; margin: auto; padding: 10px;">
- Welcome <?php echo $firstname.' '.$lastname; ?>, <a href="/AngularJS_Pickomino_Project/InProgress/app/assets/php/logout.php">Log out</a>
-</div>
+<body>
+	<div style="text-align: center; margin: auto; padding: 10px;">
+	 Welcome <?php echo $firstname.' '.$lastname; ?>, <a href="logout.php">Log out</a>
+	</div>
 	<game-header></game-header>
 	
 	<game-board></game-board>
@@ -81,7 +82,7 @@ if(loggedin()){
 	</script>		
 	
 </body>
-
+</html>
 <?php
 }else{
 	header('Location: /AngularJS_Pickomino_Project/InProgress/app/assets/php/index.php');
