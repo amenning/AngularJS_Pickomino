@@ -12,6 +12,7 @@ angular.module('pickominoGame')
 	
 		var gameState = { 
 							gameID: null,
+							gameStateID: null,
 							gameStatus: GameAction.status,
 							grillWorms: GrillWormsArray.array,
 							deadGrillWorms: GrillWormsArray.deadArray,
@@ -25,7 +26,7 @@ angular.module('pickominoGame')
 		
 		return {
 			newGame: function(){
-				
+				//Set new game ID
 			},
 			
 			save: function(){
@@ -33,12 +34,16 @@ angular.module('pickominoGame')
 				
 				return $http.post("app/assets/php/game_state.php", gameState)
 					.success(function(data){
-						console.log(data);
+						console.log(data)
+						gameState.gameStateID = data;
 					});
 			},
 			
 			load: function(){
-				
+				return $http.post("app/assets/php/game_state.php", gameState)
+					.success(function(data){
+						console.log({grillWormsTest: data});
+					});
 			},
 			
 			clear: function(){
