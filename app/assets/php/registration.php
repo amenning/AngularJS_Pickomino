@@ -65,7 +65,7 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['user
 						$query_user_id_run=mysql_query($query_user_id);
 						$user_id = mysql_result($query_user_id_run, 0, 'id');
 						$_SESSION['user_id']=$user_id;
-						header('Location: index.php');
+						header('Location: /AngularJS_Pickomino_Project/InProgress/app/assets/php/index.php');
 					}else{
 						echo 'Registration Error.';
 					}

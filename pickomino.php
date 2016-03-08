@@ -1,7 +1,7 @@
 <?php
-require '/AngularJS_Pickomino_Project/InProgress/app/assets/php/core.inc.php';
-require '/AngularJS_Pickomino_Project/InProgress/app/assets/php/connect.inc.php';
-require '/AngularJS_Pickomino_Project/InProgress/app/assets/php/password.php';
+require 'app/assets/php/core.inc.php';
+require 'app/assets/php/connect.inc.php';
+require 'app/assets/php/password.php';
 
 if(loggedin()){
 	$firstname = getuserfield('firstname');
