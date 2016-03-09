@@ -139,6 +139,24 @@
    color: #fff;
    font-size: 32px;
  }
+ .login{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ } 
+ .login input{
+ 	color: #000000;
+ }
+ .login a{
+ 	color: #FFFFFF;
+ }
+ .login #loginBtn {
+ 	color: #FFFFFF;
+ }
  .rules{
    text-align: left;
    background-color: #457f86;

@@ -1,4 +1,7 @@
 <?php
+require 'core.inc.php';
+require 'connect.inc.php';
+require 'password.php';
 
 if(isset($_POST['username']) && isset($_POST['password'])){
 	$username = $_POST['username'];

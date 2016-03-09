@@ -1,7 +1,10 @@
-<div class = "container-game inset">
-	<div class = "rules inset">
-		<h2>Game Login</h2>
-
-
-	</div>
+<div class = "login inset">
+	<form action="app/assets/php/loginform.inc.php" method="POST">
+		<h1>Welcome to Pickomino!</h1>
+		<br/>
+		Please log in below or <a href="registration.php" class = 'btn btn-primary inset'>Register</a><br><br>
+		Username: <input type="text" name="username" required><br><br> 
+		Password: <input type="password" name="password" required> <br><br>
+		<input id="loginBtn" type="submit" value="Log in" class ='btn btn-primary inset' >
+	</form>
 </div>

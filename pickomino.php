@@ -2,11 +2,6 @@
 require 'app/assets/php/core.inc.php';
 require 'app/assets/php/connect.inc.php';
 require 'app/assets/php/password.php';
-
-if(loggedin()){
-	$firstname = getuserfield('firstname');
-	$lastname = getuserfield('lastname');
-		
 ?>
 <!DOCTYPE html>
 <html lang="en" ng-app="pickominoGame">
@@ -19,9 +14,16 @@ if(loggedin()){
 	<link rel="stylesheet" type="text/css" href="app/assets/css/board.css">
 </head>
 <body>
-	<div style="text-align: center; margin: auto; padding: 10px;">
-	 Welcome <?php echo $firstname.' '.$lastname; ?>, <a href="app/assets/php/logout.php">Log out</a>
-	</div>
+	<?php
+		if(loggedin()){
+			$firstname = getuserfield('firstname');
+			$lastname = getuserfield('lastname');
+			
+			echo '<div style="text-align: center; margin: auto; padding: 10px;">';
+	 		echo 'Welcome '.$firstname.' '.$lastname.', <a href="app/assets/php/logout.php">Log out</a>';
+			echo '</div>';
+		}
+	?>
 	<game-header></game-header>
 	
 	<game-body></game-body>
@@ -86,8 +88,3 @@ if(loggedin()){
 	
 </body>
 </html>
-<?php
-}else{
-	header('Location: /AngularJS_Pickomino_Project/InProgress/app/assets/php/index.php');
-}
-?>
