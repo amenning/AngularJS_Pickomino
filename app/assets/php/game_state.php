@@ -31,7 +31,7 @@ if(isset($grillWorms) && isset($activeDice) && isset($frozenDice)){
 		'".mysql_real_escape_string(serialize($playerMessage))."',
 		'".mysql_real_escape_string(serialize($playerWorms))."',
 		'".mysql_real_escape_string(serialize($playerWormsTotals))."',
-		'".mysql_real_escape_string(serialize($gameID))."',
+		'".mysql_real_escape_string($gameID)."',
 		'".mysql_real_escape_string($created_at)."')";
 	if(@$query_save_game_state_run=mysql_query($query_save_game_state)){
 		$query_game_state_id="SELECT * FROM `".$mySQL_db_table."` WHERE `created_at`='".mysql_real_escape_string($created_at)."'";

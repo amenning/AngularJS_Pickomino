@@ -1,0 +1,10 @@
+<div ng-controller="ActionController as action">
+
+	<!-- If not logged in, show login area here -->
+	<game-login ng-show="action.gameStatus.gameLogin"></game-login>
+	<!-- If logged in, show game selection here -->
+	<game-setup ng-show="action.gameStatus.gameSetup && !action.gameStatus.gameLogin"></game-setup>
+	<!-- If logged in and game selected, show game board here -->
+	<game-board ng-hide="action.gameStatus.gameLogin || action.gameStatus.gameSetup"></game-board>
+
+</div>

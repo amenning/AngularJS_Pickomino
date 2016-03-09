@@ -24,7 +24,7 @@ if(loggedin()){
 	</div>
 	<game-header></game-header>
 	
-	<game-board></game-board>
+	<game-body></game-body>
 	
 	<common-footer></common-footer>
 	
@@ -39,6 +39,9 @@ if(loggedin()){
 	<!-- Directives -->
 	<script src="app/assets/js/directives/common-header.js"></script>
 	<script src="app/assets/js/directives/game-header.js"></script>
+	<script src="app/assets/js/directives/game-body.js"></script>
+	<script src="app/assets/js/directives/game-login.js"></script>
+	<script src="app/assets/js/directives/game-setup.js"></script>
 	<script src="app/assets/js/directives/game-board.js"></script>
 	<script src="app/assets/js/directives/game-grill-worms.js"></script>
 	<script src="app/assets/js/directives/game-player-options.js"></script>
