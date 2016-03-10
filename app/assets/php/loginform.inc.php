@@ -32,12 +32,3 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 }
 
 ?>
-<div style="text-align: center; margin: auto; padding: 10px;">
-<form action="<?php echo $current_file; ?>" method="POST">
-Welcome to Pickomino!<br><br>
-Please log in below or <a href="registration.php">Register</a><br><br>
-Username: <input type="text" name="username"><br><br> 
-Password: <input type="password" name="password"> <br><br>
-<input type="submit" value="Log in">
-</form>
-<div>

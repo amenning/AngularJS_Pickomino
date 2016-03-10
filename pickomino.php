@@ -18,8 +18,9 @@ require 'app/assets/php/password.php';
 		if(loggedin()){
 			$firstname = getuserfield('firstname');
 			$lastname = getuserfield('lastname');
+			$user_id = getuserfield('user_id');
 			
-			echo '<div style="text-align: center; margin: auto; padding: 10px;">';
+			echo '<div style="text-align: center; margin: auto; padding: 10px;" ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('.$user_id.')">';
 	 		echo 'Welcome '.$firstname.' '.$lastname.', <a href="app/assets/php/logout.php">Log out</a>';
 			echo '</div>';
 		}
@@ -70,6 +71,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/save-game-state.js"></script>
 	
 	<!-- Controllers -->
+	<script src="app/assets/js/controllers/game-login-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
 	<script src="app/assets/js/controllers/game-frozen-dice-controller.js"></script>

@@ -10,6 +10,7 @@ angular.module('pickominoGame')
 	
 		var gameActionStatus = {
 			gameLogin: true,
+			userID: null,
 			gameSetup: true,
 			roll: false,
 			freezeDice: false,
