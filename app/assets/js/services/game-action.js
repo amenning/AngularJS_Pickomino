@@ -30,6 +30,14 @@ angular.module('pickominoGame')
 				gameActionStatus[action] = status;		
 			},
 			
+			loadState: function(state){
+				for (var key in state) {
+ 					if (gameActionStatus.hasOwnProperty(key)) {
+    					this.setStatus(key, state[key]);
+  					}
+				}
+			},
+			
 			checkMoveAvailable: function(){
 				var canDiceFreeze = false;
 				var canTakeWorm = false;

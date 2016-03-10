@@ -65,13 +65,12 @@ angular.module('pickominoGame')
 				return $http.post("app/assets/php/load_game_state.php", data)
 					.success(function(data){
 						gameState.gameStateID = data.gameStateID;
-						GameAction.status = data.gameStatus;
+						GameAction.loadState(data.gameStatus);
 						GrillWormsArray.array = data.grillWorms;
 						GrillWormsArray.deadArray = data.deadGrillWorms;
-						PlayerNotification.message = data.playerMessage;
+						PlayerNotification.setMessage(data.playerMessage.info);
 						ActiveDiceArray.loadState(data.activeDice);
 						FrozenDiceArray.loadState(data.frozenDice);
-						FrozenDiceArray.frozenStatus= data.frozenDiceTotal;
 						PlayerWormsArray.array = data.playerWorms;
 						PlayerWormsArray.status = data.playerWormsTotals;
 						console.log(gameState);
