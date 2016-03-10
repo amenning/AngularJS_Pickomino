@@ -171,6 +171,24 @@
    width: 200px;
  }
  
+  .registration{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ }
+  .registration input{
+   color: #000;
+ }
+  .registration input[type="submit"]{
+   margin: 20px;
+   width: 200px;
+   color: #fff;
+ }
+ 
  .rules{
    text-align: left;
    background-color: #457f86;

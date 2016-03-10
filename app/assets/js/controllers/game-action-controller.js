@@ -20,7 +20,7 @@ angular.module('pickominoGame')
 		this.activeDice = ActiveDiceArray.array;
 		this.frozenDice = FrozenDiceArray.array;
 		this.gameStatus = GameAction.status;
-		
+
 		this.setPlayers = function(numPlayers){
 			GameAction.setStatus('numPlayers', numPlayers);
 			GameAction.setStatus('playerSetup', false);

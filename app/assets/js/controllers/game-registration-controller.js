@@ -1,6 +1,6 @@
 angular.module('pickominoGame')		
 	
-.controller("LoginController", [
+.controller("RegistrationController", [
 	'GameAction',
 	'GameState',
 	'$http',
@@ -9,12 +9,7 @@ angular.module('pickominoGame')
 		
 		this.setUser = function(userID){
 			GameAction.setStatus('userID', userID);
-			GameAction.setStatus('gameLogin', false);
-		};
-		
-		this.register = function(){
-			GameAction.setStatus('gameRegistration', true);
-			GameAction.setStatus('gameLogin', false);
+			GameAction.setStatus('gameRegistration', false);
 		};
 	}
 ]);	

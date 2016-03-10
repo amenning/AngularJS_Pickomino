@@ -44,6 +44,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/directives/game-header.js"></script>
 	<script src="app/assets/js/directives/game-body.js"></script>
 	<script src="app/assets/js/directives/game-login.js"></script>
+	<script src="app/assets/js/directives/game-registration.js"></script>
 	<script src="app/assets/js/directives/game-setup.js"></script>
 	<script src="app/assets/js/directives/game-board.js"></script>
 	<script src="app/assets/js/directives/game-grill-worms.js"></script>
@@ -72,6 +73,7 @@ require 'app/assets/php/password.php';
 	
 	<!-- Controllers -->
 	<script src="app/assets/js/controllers/game-login-controller.js"></script>
+	<script src="app/assets/js/controllers/game-registration-controller.js"></script>
 	<script src="app/assets/js/controllers/game-setup-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
