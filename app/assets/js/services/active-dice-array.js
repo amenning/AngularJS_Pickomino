@@ -25,6 +25,23 @@ angular.module('pickominoGame')
 			for(var x=activeDiceArray.length-1; x>=0; x--){
 				activeDiceArray[x].canFreeze = false;
 			}
+		},
+		
+		loadState: function(state){
+			this.emptyDice();
+			for(x=0; x<state.length; x++){
+				this.add({canFreeze: state[x].canFreeze, value: state[x].value, image: state[x].image});
+			}
+		},
+
+		add: function(dice){
+			activeDiceArray.push(dice);			
+		},
+		
+		emptyDice: function(){
+			for(var i=activeDiceArray.length; i>0; i--){
+				activeDiceArray.pop();
+			};
 		}
 	};
 }]);

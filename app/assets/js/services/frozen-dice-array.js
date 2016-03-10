@@ -31,6 +31,13 @@ angular.module('pickominoGame')
 			frozenDiceStatus.haveWorm = false;
 		},
 		
+		loadState: function(state){
+			this.emptyDice();
+			for(x=0; x<state.length; x++){
+				this.add({value: state[x].value, image: state[x].image});
+			}
+		},
+		
 		frozenStatus: frozenDiceStatus
 	};
 }]);	

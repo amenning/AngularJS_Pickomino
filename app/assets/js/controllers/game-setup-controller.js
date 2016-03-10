@@ -9,15 +9,15 @@ angular.module('pickominoGame')
 		this.setGame = function(type){
 			switch(type){
 				case "continue":
-					//GameState.newGame();
-					console.log('continue');
+					GameState.loadGame();
 					break;
 				case "new":
 					GameState.newGame();
 					GameAction.setStatus('roll', true);
+					GameAction.setStatus('gameSetup', false);
 					break;
 			};
-			GameAction.setStatus('gameSetup', false);
+		GameAction.setStatus('gameSetup', false);
 		};
 	}
 ]);	
