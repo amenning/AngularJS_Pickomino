@@ -26,6 +26,30 @@ angular.module('pickominoGame')
 			}
 		},
 		
+		emptyArray: function(array){
+			for(var i=array.length; i>0; i--){
+				array.pop();
+			}
+		},
+		
+		loadGrillWormsState: function(state){
+			if(state!==undefined && state.length>0){
+				this.emptyArray(grillWormsArray);
+				for(var x=0; x<state.length; x++){
+					grillWormsArray.push(state[x]);
+				}
+			}
+		},
+		
+		loadDeadGrillWormsState: function(state){
+			if(state!==undefined && state.length>0){
+				this.emptyArray(deadGrillWormsArray);
+				for(var x=0; x<state.length; x++){
+					deadGrillWormsArray.push(state[x]);
+				}
+			}			
+		},
+		
 		addWorm: function(wormValue){
 			grillArrayLength = grillWormsArray.length;
 			wormImage = SetWormImage.imagify(wormValue);

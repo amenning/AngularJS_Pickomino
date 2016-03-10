@@ -26,25 +26,18 @@ angular.module('pickominoGame')
 		
 		return {
 			newGame: function(){
-				//Set new game ID
-				console.log(gameState);
 				data = {userID: gameState.gameStatus.userID};
 				
 				return $http.post("app/assets/php/new_game.php", data)
 					.success(function(data){
-						console.log(data)
 						gameState.gameID = data;
 					});
 			},
 			
-			save: function(){
-				console.log('save');
-				
+			save: function(){				
 				return $http.post("app/assets/php/game_state.php", gameState)
 					.success(function(data){
-						console.log(data)
 						gameState.gameStateID = data;
-						console.log(gameState);
 					});
 			},
 			
@@ -66,15 +59,13 @@ angular.module('pickominoGame')
 					.success(function(data){
 						gameState.gameStateID = data.gameStateID;
 						GameAction.loadState(data.gameStatus);
-						GrillWormsArray.array = data.grillWorms;
-						GrillWormsArray.deadArray = data.deadGrillWorms;
+						GrillWormsArray.loadGrillWormsState(data.grillWorms);
+						GrillWormsArray.loadDeadGrillWormsState(data.deadGrillWorms);
 						PlayerNotification.setMessage(data.playerMessage.info);
 						ActiveDiceArray.loadState(data.activeDice);
 						FrozenDiceArray.loadState(data.frozenDice);
-						PlayerWormsArray.array = data.playerWorms;
-						PlayerWormsArray.status = data.playerWormsTotals;
-						console.log(gameState);
-						console.log(FrozenDiceArray.array);
+						PlayerWormsArray.loadStatusState(data.playerWormsTotals);
+						PlayerWormsArray.loadWormsState(data.playerWorms);
 					});
 			},
 			

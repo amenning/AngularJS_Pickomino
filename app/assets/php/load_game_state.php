@@ -28,6 +28,7 @@ if($query_run = mysql_query($query)){
 		echo $response = json_encode(array( 'gameStateID' => $gameStateID,
 											'gameStatus' => $gameStatus, 
 						  					'grillWorms' => $grillWorms,
+						  					'deadGrillWorms' => $deadGrillWorms,
 											'activeDice' => $activeDice,
 											'frozenDice' => $frozenDice,
 											'gameStatus' => $gameStatus,

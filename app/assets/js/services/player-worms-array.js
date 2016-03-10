@@ -28,7 +28,32 @@ angular.module('pickominoGame')
 			playerWormsArray[GameAction.status.nonActivePlayer].shift();
 			playerStatus[GameAction.status.nonActivePlayer].total -= GetWormType.amount(wormValue);
 			return wormValue;
-		}
+		},
+		
+		emptyArray: function(array){
+			for(var i=array.length; i>0; i--){
+				array.pop();
+			}
+		},
+		
+		loadWormsState: function(state){
+			for(var x=0; x<state.length; x++){
+				if(state[x]!==undefined && state[x].length>0){
+					this.emptyArray(playerWormsArray[x]);
+					for(var y=0; y<state[x].length; y++){
+						playerWormsArray[x].push(state[x][y]);
+					}
+				}
+			}
+		},
+		
+		loadStatusState: function(state){
+			if(state!==undefined && state.length>0){
+				for(var x=0; x<state.length; x++){
+					playerStatus[x].total  = state[x].total;
+				}
+			}
+		}		
 		
 	};
 }]);	

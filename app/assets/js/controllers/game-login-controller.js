@@ -8,7 +8,6 @@ angular.module('pickominoGame')
 		this.gameStatus = GameAction.status;
 		
 		this.setUser = function(userID){
-			console.log(userID);
 			GameAction.setStatus('userID', userID);
 			GameAction.setStatus('gameLogin', false);
 		};
