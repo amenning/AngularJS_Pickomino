@@ -28,8 +28,9 @@ angular.module('pickominoGame')
 			newGame: function(){
 				//Set new game ID
 				console.log(gameState);
+				data = {userID: gameState.gameStatus.userID};
 				
-				return $http.post("app/assets/php/new_game.php", gameState)
+				return $http.post("app/assets/php/new_game.php", data)
 					.success(function(data){
 						console.log(data)
 						gameState.gameID = data;

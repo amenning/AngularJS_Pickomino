@@ -18,7 +18,7 @@ require 'app/assets/php/password.php';
 		if(loggedin()){
 			$firstname = getuserfield('firstname');
 			$lastname = getuserfield('lastname');
-			$user_id = getuserfield('user_id');
+			$user_id = getuserfield('id');
 			
 			echo '<div style="text-align: center; margin: auto; padding: 10px;" ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('.$user_id.')">';
 	 		echo 'Welcome '.$firstname.' '.$lastname.', <a href="app/assets/php/logout.php">Log out</a>';

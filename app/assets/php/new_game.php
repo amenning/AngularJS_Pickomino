@@ -8,12 +8,12 @@ $mySQL_db_table = 'game';
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
-#$player_1_id = $request->player_1_id;
-#$player_2_id = $request->player_2_id;
+//$gameStatus = $request->gameStatus;
+$player_1_id = $request->userID;
 $created_at = time();
 
 $query_create_new_game="INSERT INTO `".$mySQL_db_table."` VALUES('',
-																 '',
+																 '".mysql_real_escape_string($player_1_id)."',
 																 '',	
 																 '".mysql_real_escape_string($created_at)."')";
 

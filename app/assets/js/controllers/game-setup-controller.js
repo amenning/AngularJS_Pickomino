@@ -13,8 +13,6 @@ angular.module('pickominoGame')
 					console.log('continue');
 					break;
 				case "new":
-					//GameAction.setStatus('gameSetup', false);
-					console.log('new');
 					GameState.newGame();
 					GameAction.setStatus('roll', true);
 					break;
