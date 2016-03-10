@@ -13,9 +13,10 @@ $request = json_decode($postdata);
 $created_at = time();
 
 $query_create_new_game="INSERT INTO `".$mySQL_db_table."` VALUES('',
-	'',
-	'',
-	'".mysql_real_escape_string($created_at)."')";
+																 '',
+																 '',	
+																 '".mysql_real_escape_string($created_at)."')";
+
 if(@$query_create_new_game_run=mysql_query($query_create_new_game)){
 	$query_game_id="SELECT * FROM `".$mySQL_db_table."` WHERE `created_at`='".mysql_real_escape_string($created_at)."'";
 	$query_game_id_run=mysql_query($query_game_id);

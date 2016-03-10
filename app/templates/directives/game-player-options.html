@@ -7,13 +7,13 @@
 		</span>
 	</div>	
 	<div class = 'playeroptions outset'>
-		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(1)" ng-show="action.gameStatus.gameSetup">
+		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(1)" ng-show="action.gameStatus.playerSetup">
 			Solo Play
 		</button>
-		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(2)" ng-show="action.gameStatus.gameSetup">
+		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(2)" ng-show="action.gameStatus.playerSetup">
 			Two Players
 		</button>
-		<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.gameSetup || action.gameStatus.bunk || action.gameStatus.gameOver">
+		<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.playerSetup || action.gameStatus.bunk || action.gameStatus.gameOver">
 			Roll
 		</button>
 		<button class = 'buttons inset bunkButtonHighlight' ng-show="action.gameStatus.bunk" ng-click="action.bunkPenalty()">

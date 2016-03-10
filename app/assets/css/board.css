@@ -157,6 +157,20 @@
  .login #loginBtn {
  	color: #FFFFFF;
  }
+ .setup{
+   text-align: center;
+   background-color: #457f86;
+   border-radius: 6px;
+   border: 2px solid #fff;
+   color: #fff;
+   font-size: 24px;
+   padding: 20px;
+ }
+  .setup button{
+   margin: 20px;
+   width: 200px;
+ }
+ 
  .rules{
    text-align: left;
    background-color: #457f86;

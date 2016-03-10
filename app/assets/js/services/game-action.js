@@ -12,6 +12,7 @@ angular.module('pickominoGame')
 			gameLogin: true,
 			userID: null,
 			gameSetup: true,
+			playerSetup: true,
 			roll: false,
 			freezeDice: false,
 			takeWorm: false,

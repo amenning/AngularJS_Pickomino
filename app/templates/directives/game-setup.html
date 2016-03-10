@@ -1,5 +1,8 @@
-<div class = "rules inset">
-	<h2>Game Setup</h2>
-
-
+<div class = "setup inset" ng-controller="SetupController as setupCtrl">
+		<button class = 'btn btn-primary inset' ng-click="setupCtrl.setGame('new')">
+			New Game
+		</button>
+		<button class = 'btn btn-primary inset' ng-click="setupCtrl.setGame('continue')">
+			Continue Game
+		</button>
 </div>

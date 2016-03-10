@@ -72,6 +72,7 @@ require 'app/assets/php/password.php';
 	
 	<!-- Controllers -->
 	<script src="app/assets/js/controllers/game-login-controller.js"></script>
+	<script src="app/assets/js/controllers/game-setup-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
 	<script src="app/assets/js/controllers/game-frozen-dice-controller.js"></script>

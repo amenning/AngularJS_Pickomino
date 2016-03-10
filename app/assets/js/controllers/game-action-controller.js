@@ -23,6 +23,7 @@ angular.module('pickominoGame')
 		
 		this.setPlayers = function(numPlayers){
 			GameAction.setStatus('numPlayers', numPlayers);
+			GameAction.setStatus('playerSetup', false);
 			GameAction.setStatus('roll', true);
 			GameAction.setStatus('gameSetup', false);
 			GameState.newGame();
