@@ -4,7 +4,7 @@ require 'app/assets/php/connect.inc.php';
 require 'app/assets/php/password.php';
 ?>
 <!DOCTYPE html>
-<html lang="en" ng-app="pickominoGame">
+<html lang="en" ng-app="pickominoGame" class='container-game'>
 <head>
 	<meta charset="utf-8" />
 	<title>Angular Pickomino</title>
@@ -20,17 +20,18 @@ require 'app/assets/php/password.php';
 			$lastname = getuserfield('lastname');
 			$user_id = getuserfield('id');
 			
-			echo '<div style="text-align: center; margin: auto; padding: 10px;" ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('.$user_id.')">';
+			echo '<div style="text-align: center; margin: auto; padding: 10px;   background-color: #f8f8f8;" ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('.$user_id.')">';
 	 		echo 'Welcome '.$firstname.' '.$lastname.', <a href="app/assets/php/logout.php">Log out</a>';
 			echo '</div>';
 		}
 	?>
-	<game-header></game-header>
+	<div>
+		<game-header></game-header>
 	
-	<game-body></game-body>
+		<game-body></game-body>
 	
-	<common-footer></common-footer>
-	
+		<common-footer></common-footer>
+	</div>
 	
 	<!-- Vendors -->
 	<script src="node_modules/jquery/dist/jquery.js"></script>

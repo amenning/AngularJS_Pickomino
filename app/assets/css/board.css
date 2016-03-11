@@ -14,19 +14,20 @@
 	-o-background-size: cover;
 	background-size: cover;
    /*height: 800px;
-   width: 1600px; */
+   width: 1600px;
    height: 100%;
    width: 100%;
    margin: 0px auto;
-   padding: 10px;
    border-radius: 4px;
+   */
  }
+ .
  .header {
    border: 2px solid #fff;
    border-radius: 4px;
    height: 55px;
    margin: 14px auto;
-   background-color: #457f86
+   background-color: #457f86;
  }
  .header h2 {
    height: 30px;

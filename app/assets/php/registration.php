@@ -3,43 +3,6 @@ require 'core.inc.php';
 require 'connect.inc.php';
 require 'password.php';
 
-?>
-<div style="text-align: center; margin: auto; padding: 10px;">
-	<form action="registration.php" method="POST">
-	<h3>Welcome to Pickomino!<br>  
-	Please register below.</h3>
-	<table style="margin: auto;">
-		<tr>
-			<td>First Name:</td> 
-			<td><input type="text" name="firstname" /></td>
-		</tr>
-		<tr>
-			<td>Last Name:</td> 
-			<td><input type="text" name="lastname" /></td>
-		</tr>
-		<tr>
-			<td>Username:</td>
-			<td><input type="text" name="username" /></td>
-		</tr>
-		<tr>
-			<td>Password:</td>
-			<td><input type="password" name="password" /></td>
-		</tr>
-		<tr>
-			<td>Confirm Password:</td>
-			<td><input type="password" name="password_check" /></td>
-		</tr>
-		<tr>
-			<td>Email:</td>
-			<td><input type="text" name="email" /></td>
-		</tr>
-	</table>
-	<br>
-	<input type="submit" value="Register" />
-	</form>
-
-<?php
-
 if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password_check']) && isset($_POST['email'])){
 	if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['password_check']) && !empty($_POST['email'])){
 		$firstname=$_POST['firstname'];
@@ -82,4 +45,3 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['user
 }
 
 ?>
-</div>
