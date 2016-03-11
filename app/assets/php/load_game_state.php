@@ -12,7 +12,8 @@ $game_id = $request->gameID;
 
 $query = "SELECT * FROM `".$mySQL_game_state."` WHERE `gameID`='".$game_id."' ORDER BY `id` DESC";
 if($query_run = mysql_query($query)){
-	if($query_result = mysql_result($query_run, 0, 'id')){
+	$rows = mysql_num_rows($query_run);
+	if($rows>0){			
 		$gameStateID = mysql_result($query_run, 0, 'id');
 		$gameStatus = unserialize(mysql_result($query_run, 0, 'gameStatus'));
 		$grillWorms = unserialize(mysql_result($query_run, 0, 'grillWorms'));
@@ -35,6 +36,9 @@ if($query_run = mysql_query($query)){
 											'playerMessage' => $playerMessage,
 											'playerWorms' => $playerWorms,
 											'playerWormsTotals' => $playerWormsTotals));						  
+ 
+	}else{
+		echo $response = false;
 	}
 }
 

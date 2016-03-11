@@ -17,7 +17,6 @@ angular.module('pickominoGame')
 					GameAction.setStatus('gameSetup', false);
 					break;
 			};
-		GameAction.setStatus('gameSetup', false);
 		};
 	}
 ]);	

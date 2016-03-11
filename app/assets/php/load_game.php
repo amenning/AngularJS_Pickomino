@@ -12,8 +12,12 @@ $player_id = $request->userID;
 
 $query = "SELECT `id` FROM `".$mySQL_game."` WHERE `player_1_id`='".$player_id."' ORDER BY `id` DESC";
 if($query_run = mysql_query($query)){
-	if($query_result = mysql_result($query_run, 0, 'id')){
+	$rows = mysql_num_rows($query_run);
+	if($rows>0){		
+		$query_result = mysql_result($query_run, 0, 'id');
 		echo $query_result;
+	}else{
+		echo $response = false;
 	}
 }
 

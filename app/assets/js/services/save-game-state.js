@@ -47,8 +47,10 @@ angular.module('pickominoGame')
 				
 				return $http.post("app/assets/php/load_game.php", data)
 					.success(function(data){
-						gameState.gameID=data;
-						gameStateScope.loadGameState();
+						if(data!=false){
+							gameState.gameID=data;
+							gameStateScope.loadGameState();
+						}
 					});
 			},
 			
@@ -57,15 +59,17 @@ angular.module('pickominoGame')
 				
 				return $http.post("app/assets/php/load_game_state.php", data)
 					.success(function(data){
-						gameState.gameStateID = data.gameStateID;
-						GameAction.loadState(data.gameStatus);
-						GrillWormsArray.loadGrillWormsState(data.grillWorms);
-						GrillWormsArray.loadDeadGrillWormsState(data.deadGrillWorms);
-						PlayerNotification.setMessage(data.playerMessage.info);
-						ActiveDiceArray.loadState(data.activeDice);
-						FrozenDiceArray.loadState(data.frozenDice);
-						PlayerWormsArray.loadStatusState(data.playerWormsTotals);
-						PlayerWormsArray.loadWormsState(data.playerWorms);
+						if(data!=false){
+							gameState.gameStateID = data.gameStateID;
+							GameAction.loadState(data.gameStatus);
+							GrillWormsArray.loadGrillWormsState(data.grillWorms);
+							GrillWormsArray.loadDeadGrillWormsState(data.deadGrillWorms);
+							PlayerNotification.setMessage(data.playerMessage.info);
+							ActiveDiceArray.loadState(data.activeDice);
+							FrozenDiceArray.loadState(data.frozenDice);
+							PlayerWormsArray.loadStatusState(data.playerWormsTotals);
+							PlayerWormsArray.loadWormsState(data.playerWorms);					
+						}
 					});
 			},
 			
