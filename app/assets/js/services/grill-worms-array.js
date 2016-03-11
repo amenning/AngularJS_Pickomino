@@ -33,7 +33,7 @@ angular.module('pickominoGame')
 		},
 		
 		loadGrillWormsState: function(state){
-			if(state!==undefined && state.length>0){
+			if(state!==undefined && state.length>=0){
 				this.emptyArray(grillWormsArray);
 				for(var x=0; x<state.length; x++){
 					grillWormsArray.push(state[x]);
@@ -42,7 +42,7 @@ angular.module('pickominoGame')
 		},
 		
 		loadDeadGrillWormsState: function(state){
-			if(state!==undefined && state.length>0){
+			if(state!==undefined && state.length>=0){
 				this.emptyArray(deadGrillWormsArray);
 				for(var x=0; x<state.length; x++){
 					deadGrillWormsArray.push(state[x]);
