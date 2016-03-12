@@ -1,5 +1,5 @@
 <?php
 
-header('Location: pickomino.html');
+header('Location: pickomino.php');
 
 ?>

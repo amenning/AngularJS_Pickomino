@@ -4,7 +4,7 @@
   width: 50px;
  }
  img {
-  height: 75px;
+  height: 50px;
   border-radius: 15px;
  }
  .container-game {
@@ -49,7 +49,7 @@
    border-style: solid;
    border-color: #fff;
    border-width: 0px 2px 2px 2px;
-   min-height: 130px;
+   min-height: 100px;
    padding: 5px;
  }
   .playerWorms{
@@ -61,7 +61,7 @@
    border-style: solid;
    border-color: #fff;
    border-width: 0px 2px 2px 2px;
-   min-height: 130px;
+   min-height: 100px;
    padding: 5px;
  }
  .twoPlayerWidth{
@@ -75,8 +75,8 @@
  .worm{
    flex: 0 0 auto;
    background: white;
-   height: 120px;
-   width: 100px;
+   height: 90px;
+   width: 70px;
    /*margin: 0 auto;*/
    padding: 0px 0px 0px 0px;
    border-color: #215f1e;
@@ -98,7 +98,7 @@
    border-style: solid;
    border-width: 0px 2px 2px 2px;
    border-radius: 0px 0px 6px 6px;
-   min-height: 100px;
+   min-height: 75px;
  }
  .frozendice{
    display: flex;
@@ -109,16 +109,16 @@
    border-style: solid;
    border-width: 0px 2px 2px 2px;
    border-radius: 0px 0px 6px 6px;
-   min-height: 100px;
+   min-height: 75px;
  }
  .dice{
    flex: 0 0 auto;
    background: white;
-   height: 75px;
-   width: 75px;
+   height: 51px;
+   width: 51px;
    margin: 8px;
-   border: 2px solid #215f1e;
-   border-radius: 4px;
+   border: 8px solid #215f1e;
+   border-radius: 6px;
    text-align: center;
  }
  .playeroptions{
@@ -130,7 +130,7 @@
    border-style: solid;
    border-width: 0px 2px 2px 2px;
    border-radius: 0px 0px 6px 6px;
-   height: 100px;
+   min-height: 75px;
  }
  .playerNotification{
    text-align: center;
@@ -201,7 +201,7 @@
  }  
  .buttons {
    flex: 0 0 auto;
-   height: 50px;
+   height: 35px;
    width: 100px;
    margin: 8px;
    text-align: center;
@@ -230,7 +230,7 @@
    border-color: #fff;
    border-width: 2px 2px 0px 2px;
    color: #fff;
-   font-size: 32px;
+   font-size: 24px;
  }
  
  .outset {
@@ -267,9 +267,9 @@
  .cross{
   	left: 0;
   	position: absolute;
-  	top: -75px;
+  	top: -50px;
   	text-align: center;
-  	font-size: 175px;
+  	font-size: 125px;
   	color: red;
  }
  
