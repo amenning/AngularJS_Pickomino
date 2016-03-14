@@ -4,8 +4,10 @@ angular.module('pickominoGame')
 	'GameAction',
 	'GameState',
 	'$http',
-	function(GameAction, GameState, $http){
+	'$scope',
+	function(GameAction, GameState, $http, $scope){
 		this.gameStatus = GameAction.status;
+		this.formData = {};
 		
 		this.setUser = function(userID){
 			GameAction.setStatus('userID', userID);
@@ -15,6 +17,31 @@ angular.module('pickominoGame')
 		this.register = function(){
 			GameAction.setStatus('gameRegistration', true);
 			GameAction.setStatus('gameLogin', false);
+		};
+		
+		this.processForm = function(){
+			 $http({
+  				method  : 'POST',
+  				url     : 'app/assets/php/loginform.inc.php',
+  				data    : $.param(this.formData),  // pass in data as strings
+  				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+ 			})
+  			.success(function(data) {
+    			console.log(data);
+				if(data.match===true){
+					GameAction.setStatus('gameLogin', false);
+				}else{
+					
+				}
+			    //if (!data.success) {
+      				// if not successful, bind errors to error variables
+      				//$scope.errorName = data.errors.name;
+      				//$scope.errorSuperhero = data.errors.superheroAlias;
+    			//} else {
+      				// if successful, bind success message to message
+      				//$scope.message = data.message;
+    			//}
+  			});
 		};
 		
 		this.guestLogin = function(){

@@ -18,7 +18,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
 				$user_password_hash = mysql_result($query_username_run, 0, 'password');
 				if(@password_verify($password, $user_password_hash)){				
 					$_SESSION['user_id']=$user_id;
-					header('Location: /AngularJS_Pickomino_Project/InProgress/pickomino.php');
+					//header('Location: /AngularJS_Pickomino_Project/InProgress/pickomino.php');
+					echo $response = json_encode(array('match' => true));	
 				}else{
 					echo 'Invalid username/password.';
 				}
