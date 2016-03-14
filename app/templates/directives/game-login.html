@@ -5,15 +5,10 @@
 		Please log in below or <a ng-click="loginCtrl.register()" class = 'btn btn-primary inset'>Register</a><br/><br/>
 		Username: <input type="text" name="username" required><br/><br/> 
 		Password: <input type="password" name="password" required> <br/><br/>
-		<div>
-			<div class='col-sm-1 col-md-4'></div>
-			<input id="loginBtn" type="submit" value="Log in" class ='btn btn-primary inset col-sm-4 col-md-1' >
-			<div class='col-sm-1 col-md-2'></div>
-			<a href='pickomino.php' ng-click="loginCtrl.guestLogin()" class ='btn btn-primary inset col-sm-4 col-md-1' >
-				Guest
-			</a>
-			<div class='col-sm-1 col-md-4'></div>
-		</div>
+		<input type="submit" value="Log in" class ='btn btn-primary inset loginBtn' >
+		<br/>
+		<br/>
+		<a href='pickomino.php' ng-click="loginCtrl.guestLogin()" class ='btn btn-primary inset loginBtn' >Guest Login</a>
 		<br/>
 	</form>
 </div>

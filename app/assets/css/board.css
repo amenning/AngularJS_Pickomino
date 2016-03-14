@@ -155,8 +155,9 @@
  .login a{
  	color: #FFFFFF;
  }
- .login #loginBtn {
+ .login .loginBtn {
  	color: #FFFFFF;
+ 	width: 200px;
  }
  .setup{
    text-align: center;
