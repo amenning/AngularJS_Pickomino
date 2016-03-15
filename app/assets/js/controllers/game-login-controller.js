@@ -61,6 +61,8 @@ angular.module('pickominoGame')
 			$http.post("app/assets/php/guest_registration.php", newGuest)
 			.success(function(data){
 				GameAction.setStatus('gameLogin', false);
+				GameAction.setStatus('firstname', data.firstname);
+				GameAction.setStatus('userID', data.user_id);
 			});
 		};
 	}
