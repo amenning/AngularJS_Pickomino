@@ -12,9 +12,12 @@ angular.module('pickominoGame')
 		//var context = this;
 		this.formData = {};
 		
-		this.setUser = function(userID){
-			GameAction.setStatus('userID', userID);
-			GameAction.setStatus('gameLogin', false);
+		this.setUser = function(userID, firstname){
+			if(userID >= 0){
+				GameAction.setStatus('userID', userID);
+				GameAction.setStatus('firstname', firstname);
+				GameAction.setStatus('gameLogin', false);
+			}
 		};
 		
 		this.register = function(){
@@ -34,8 +37,9 @@ angular.module('pickominoGame')
 					GameAction.setStatus('userID', data.userID);
 					GameAction.setStatus('gameLogin', false);
 					//$scope.name = data.firstname;
-					//GameAction.setStatus('firstname', data.firstname);
-					//console.log(GameAction.status.firstname);
+					GameAction.setStatus('firstname', data.firstname);
+					console.log(GameAction.status.firstname);
+					console.log(GameAction.status.userID);
 					
 				}else{
 					$scope.message = data.errors.message;

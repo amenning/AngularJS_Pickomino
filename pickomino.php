@@ -19,12 +19,15 @@ require 'app/assets/php/password.php';
 			$firstname = getuserfield('firstname');
 			$lastname = getuserfield('lastname');
 			$user_id = getuserfield('id');
-			
-			echo '<div style="text-align: center; margin: auto; padding: 10px;   background-color: #f8f8f8;" ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('.$user_id.')">';
-	 		echo 'Welcome '.$firstname.' '.$lastname.', <a href="app/assets/php/logout.php">Log out</a>';
-			echo '</div>';
+		}else{
+			$user_id = -1;	
+			$firstname = null;
 		}
-	?>
+	?>		
+	
+	<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('<?php echo $user_id ?>', '<?php echo $firstname ?>')">
+	</div>
+	
 	<div>
 		<game-header></game-header>
 	
@@ -74,6 +77,7 @@ require 'app/assets/php/password.php';
 	
 	<!-- Controllers -->
 	<script src="app/assets/js/controllers/game-login-controller.js"></script>
+	<script src="app/assets/js/controllers/game-header-controller.js"></script>
 	<script src="app/assets/js/controllers/game-registration-controller.js"></script>
 	<script src="app/assets/js/controllers/game-setup-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
