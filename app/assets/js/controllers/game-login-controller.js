@@ -38,9 +38,6 @@ angular.module('pickominoGame')
 					GameAction.setStatus('gameLogin', false);
 					//$scope.name = data.firstname;
 					GameAction.setStatus('firstname', data.firstname);
-					console.log(GameAction.status.firstname);
-					console.log(GameAction.status.userID);
-					
 				}else{
 					$scope.message = data.errors.message;
 				}
