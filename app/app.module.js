@@ -1,4 +1,3 @@
 (function(){
-	angular.module('pickominoGame', []);
-
+	angular.module('pickominoGame', ['ngAnimate', 'ngTouch', 'ui.bootstrap']);
 })();

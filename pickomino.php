@@ -40,6 +40,9 @@ require 'app/assets/php/password.php';
 	<script src="node_modules/jquery/dist/jquery.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-touch/angular-touch.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
+	<script src="node_modules/ui-bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
 	
 	<script src="app/app.module.js"></script>
 	
@@ -57,6 +60,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/directives/game-frozen-dice.js"></script>
 	<script src="app/assets/js/directives/game-player-worms.js"></script>
 	<script src="app/assets/js/directives/common-footer.js"></script>
+	<script src="app/assets/js/directives/tooltip.js"></script>
 	
 	<!-- Services -->
 	<script src="app/assets/js/services/set-dice-image.js"></script>
