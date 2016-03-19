@@ -8,6 +8,10 @@ angular.module('pickominoGame')
 		
 		this.setGame = function(type){
 			switch(type){
+				case "tutorial":
+					GameAction.setStatus('tutorial', true);
+					GameAction.setStatus('gameSetup', false);
+					break;
 				case "continue":
 					GameState.loadGame();
 					break;
