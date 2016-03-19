@@ -3,10 +3,10 @@
 	<!-- If not logged in, show login area here -->
 	<game-login ng-show="action.gameStatus.gameLogin"></game-login>
 	<!-- If not logged in, show registration area here -->
-	<game-registration ng-show="action.gameStatus.gameRegistration && !action.gameStatus.gameLogin"></game-registration>
+	<game-registration ng-show="action.gameStatus.gameRegistration"></game-registration>
 	<!-- If logged in, show game selection here -->
-	<game-setup ng-show="action.gameStatus.gameSetup && !action.gameStatus.gameLogin && !action.gameStatus.gameRegistration"></game-setup>
+	<game-setup ng-show="action.gameStatus.gameSetup"></game-setup>
 	<!-- If logged in and game selected, show game board here -->
-	<game-board ng-hide="action.gameStatus.gameLogin || action.gameStatus.gameSetup"></game-board>
+	<game-board ng-show="action.gameStatus.gameActive"></game-board>
 
 </div>

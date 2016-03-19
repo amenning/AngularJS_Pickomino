@@ -10,6 +10,7 @@ angular.module('pickominoGame')
 		this.setUser = function(userID){
 			GameAction.setStatus('userID', userID);
 			GameAction.setStatus('gameRegistration', false);
+			GameAction.setStatus('gameSetup', true);
 		};
 	}
 ]);	

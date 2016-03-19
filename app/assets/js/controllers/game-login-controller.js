@@ -17,6 +17,7 @@ angular.module('pickominoGame')
 				GameAction.setStatus('userID', userID);
 				GameAction.setStatus('firstname', firstname);
 				GameAction.setStatus('gameLogin', false);
+				GameAction.setStatus('gameSetup', true);
 			}
 		};
 		
@@ -36,7 +37,7 @@ angular.module('pickominoGame')
 				if(data.success===true){
 					GameAction.setStatus('userID', data.userID);
 					GameAction.setStatus('gameLogin', false);
-					//$scope.name = data.firstname;
+					GameAction.setStatus('gameSetup', true);
 					GameAction.setStatus('firstname', data.firstname);
 				}else{
 					$scope.message = data.errors.message;
@@ -58,6 +59,7 @@ angular.module('pickominoGame')
 			$http.post("app/assets/php/guest_registration.php", newGuest)
 			.success(function(data){
 				GameAction.setStatus('gameLogin', false);
+				GameAction.setStatus('gameSetup', true);
 				GameAction.setStatus('firstname', data.firstname);
 				GameAction.setStatus('userID', data.user_id);
 			});

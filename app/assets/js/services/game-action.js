@@ -11,18 +11,20 @@ angular.module('pickominoGame')
 		var gameActionStatus = {
 			gameLogin: true,
 			gameRegistration: false,
+			gameSetup: false,
+			gameActive: false,
+			tutorial: false,
+			playerSetup: false,
 			userID: null,
 			firstname: null,
-			gameSetup: true,
-			playerSetup: true,
+			numPlayers: 1,
+			activePlayer: 0,
+			nonActivePlayer: 1,
 			roll: false,
 			freezeDice: false,
 			takeWorm: false,
 			bunk: false,
-			gameOver: false,
-			numPlayers: 1,
-			activePlayer: 0,
-			nonActivePlayer: 1
+			gameOver: false
 		};
 		
 		return {
