@@ -59,6 +59,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/directives/game-active-dice.js"></script>
 	<script src="app/assets/js/directives/game-frozen-dice.js"></script>
 	<script src="app/assets/js/directives/game-player-worms.js"></script>
+	<script src="app/assets/js/directives/tutorial-board.js"></script>
 	<script src="app/assets/js/directives/common-footer.js"></script>
 	<script src="app/assets/js/directives/tooltip.js"></script>
 	
@@ -91,6 +92,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/controllers/game-player-one-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-two-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-action-controller.js"></script>
+	<script src="app/assets/js/controllers/tutorial-action-controller.js"></script>
 	<script>
 		$(function() {
 			$('.nav-tabs a').click(function (e) {
