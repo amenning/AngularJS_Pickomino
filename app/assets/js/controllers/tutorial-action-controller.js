@@ -26,8 +26,6 @@ angular.module('pickominoGame')
 			GameAction.setStatus('playerSetup', false);
 			GameAction.setStatus('roll', true);
 			GameAction.setStatus('gameSetup', false);
-			GameState.newGame();
-			GameState.save();
 		};
 		
 		this.rollDice = function (){
@@ -40,14 +38,12 @@ angular.module('pickominoGame')
 					GameAction.setStatus('roll', false);
 					GameAction.setStatus('takeWorm', false);
 					GameAction.setStatus('freezeDice', true);
-					GameState.save();
 				}else{
 					PlayerNotification.setMessage('You have bunked!  If possible, you lose your newest worm (leftmost) and the highest grill worm is out of the game.');
 					GameAction.setStatus('roll', false);
 					GameAction.setStatus('takeWorm', false);
 					GameAction.setStatus('freezeDice', false);
 					GameAction.setStatus('bunk', true);
-					GameState.save();
 				}
 			}else if(GameAction.status.gameOver===false){
 				PlayerNotification.setMessage('You have already rolled, please freeze a dice number group.');
@@ -71,7 +67,6 @@ angular.module('pickominoGame')
 						GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
 					}
 					PlayerNotification.setMessage('Please click "roll", or click the worm you would like to take.');
-					GameState.save();
 				}else{
 					PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 				}
@@ -92,13 +87,11 @@ angular.module('pickominoGame')
 						GameAction.setStatus('gameOver', true);
 						GameAction.setStatus('roll', false);
 						PlayerNotification.setMessage('Game Over!');
-						GameState.save();
 					}else{
 						RandomDice.resetDice();
 						GameAction.setStatus('roll', true);
 						GameAction.switchPlayer();
 						PlayerNotification.setMessage('Please roll the dice.');
-						GameState.save();
 					}
 				}else{
 					PlayerNotification.setMessage('You cannot take that worm tile.');
@@ -120,7 +113,6 @@ angular.module('pickominoGame')
 					GameAction.setStatus('roll', true);
 					GameAction.switchPlayer();
 					PlayerNotification.setMessage('Please roll the dice.');
-					GameState.save();
 				}else{
 					PlayerNotification.setMessage('You cannot take that worm tile.');
 				}
@@ -143,7 +135,6 @@ angular.module('pickominoGame')
 			GameAction.setStatus('bunk', false);
 			GameAction.switchPlayer();
 			PlayerNotification.setMessage('You can now reroll the dice.');
-			GameState.save();
 		};
 	}
 ]);	

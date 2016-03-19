@@ -11,6 +11,7 @@ angular.module('pickominoGame')
 				case "tutorial":
 					GameAction.setStatus('tutorial', true);
 					GameAction.setStatus('gameSetup', false);
+					GameAction.setStatus('playerSetup', true);
 					break;
 				case "continue":
 					GameState.loadGame();
