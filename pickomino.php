@@ -78,6 +78,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/check-valid-worm-steal.js"></script>
 	<script src="app/assets/js/services/active-dice-filter.js"></script>
 	<script src="app/assets/js/services/random-dice.js"></script>
+	<script src="app/assets/js/services/roll-dice.js"></script>
 	<script src="app/assets/js/services/save-game-state.js"></script>
 	<script src="app/assets/js/services/set-player-number.js"></script>
 	
