@@ -16,7 +16,7 @@
 		<button class = 'buttons inset' ng-click="optionsCtrl.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.playerSetup || action.gameStatus.bunk || action.gameStatus.gameOver">
 			Roll
 		</button>
-		<button class = 'buttons inset bunkButtonHighlight' ng-show="action.gameStatus.bunk" ng-click="action.bunkPenalty()">
+		<button class = 'buttons inset bunkButtonHighlight' ng-show="action.gameStatus.bunk" ng-click="optionsCtrl.bunkPenalty()">
 			Clear Bunk
 		</button>
 		<a href="pickomino.php"><button class = 'buttons inset activeButtonHighlight' ng-show="action.gameStatus.gameOver">
