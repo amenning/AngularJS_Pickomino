@@ -79,12 +79,14 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/active-dice-filter.js"></script>
 	<script src="app/assets/js/services/random-dice.js"></script>
 	<script src="app/assets/js/services/save-game-state.js"></script>
+	<script src="app/assets/js/services/set-player-number.js"></script>
 	
 	<!-- Controllers -->
 	<script src="app/assets/js/controllers/game-login-controller.js"></script>
 	<script src="app/assets/js/controllers/game-header-controller.js"></script>
 	<script src="app/assets/js/controllers/game-registration-controller.js"></script>
 	<script src="app/assets/js/controllers/game-setup-controller.js"></script>
+	<script src="app/assets/js/controllers/game-player-options-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
 	<script src="app/assets/js/controllers/game-frozen-dice-controller.js"></script>

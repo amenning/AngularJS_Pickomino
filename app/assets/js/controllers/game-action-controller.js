@@ -21,14 +21,14 @@ angular.module('pickominoGame')
 		this.frozenDice = FrozenDiceArray.array;
 		this.gameStatus = GameAction.status;
 
-		this.setPlayers = function(numPlayers){
-			GameAction.setStatus('numPlayers', numPlayers);
-			GameAction.setStatus('playerSetup', false);
-			GameAction.setStatus('roll', true);
-			GameAction.setStatus('gameSetup', false);
-			GameState.newGame();
-			GameState.save();
-		};
+//		this.setPlayers = function(numPlayers){
+//			GameAction.setStatus('numPlayers', numPlayers);
+//			GameAction.setStatus('playerSetup', false);
+//			GameAction.setStatus('roll', true);
+//			GameAction.setStatus('gameSetup', false);
+//			GameState.newGame();
+//			GameState.save();
+//		};
 		
 		this.rollDice = function (){
 			if(GameAction.status.roll===true){

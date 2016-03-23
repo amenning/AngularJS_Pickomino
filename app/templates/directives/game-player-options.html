@@ -1,4 +1,4 @@
-<div>
+<div ng-controller="PlayerOptionsController as optionsCtrl">
 	<div class = 'titles-box'>
 		<span class = 'titles' ng-class="{ 'redText' : action.gameStatus.bunk }">
 			<span ng-hide="action.gameStatus.numPlayers===1 || action.gameStatus.gameOver">
@@ -7,10 +7,10 @@
 		</span>
 	</div>	
 	<div class = 'playeroptions outset'>
-		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(1)" ng-show="action.gameStatus.playerSetup">
+		<button class = 'buttons inset activeButtonHighlight' ng-click="optionsCtrl.setPlayers(1)" ng-show="action.gameStatus.playerSetup">
 			Solo Play
 		</button>
-		<button class = 'buttons inset activeButtonHighlight' ng-click="action.setPlayers(2)" ng-show="action.gameStatus.playerSetup">
+		<button class = 'buttons inset activeButtonHighlight' ng-click="optionsCtrl.setPlayers(2)" ng-show="action.gameStatus.playerSetup">
 			Two Players
 		</button>
 		<button class = 'buttons inset' ng-click="action.rollDice()" ng-class="{ 'activeButtonHighlight' : action.gameStatus.roll }" ng-hide="action.gameStatus.playerSetup || action.gameStatus.bunk || action.gameStatus.gameOver">
