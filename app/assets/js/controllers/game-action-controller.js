@@ -20,65 +20,32 @@ angular.module('pickominoGame')
 		this.activeDice = ActiveDiceArray.array;
 		this.frozenDice = FrozenDiceArray.array;
 		this.gameStatus = GameAction.status;
-
-//		this.setPlayers = function(numPlayers){
-//			GameAction.setStatus('numPlayers', numPlayers);
-//			GameAction.setStatus('playerSetup', false);
-//			GameAction.setStatus('roll', true);
-//			GameAction.setStatus('gameSetup', false);
-//			GameState.newGame();
-//			GameState.save();
-//		};
-		
-//		this.rollDice = function (){
-//			if(GameAction.status.roll===true){
-//				GrillWormsArray.removeWormHighlight();
-//				RandomDice.roll();
-//				GameAction.checkMoveAvailable();				
-//				if(!GameAction.status.bunk){
-//					PlayerNotification.setMessage('Please click a dice with the number you would like to freeze.');
-//					GameAction.setStatus('roll', false);
-//					GameAction.setStatus('takeWorm', false);
-//					GameAction.setStatus('freezeDice', true);
+	
+//		this.freezeDice = function(diceValue){
+//			if(GameAction.status.freezeDice===true){
+//				if(CheckValidDiceFreeze.validate(diceValue)){
+//					ActiveDiceArray.removeHighlight();
+//					diceImage = SetDiceImage.imagify(diceValue);
+//					count = ActiveDiceFilter.count(diceValue);
+//					for(var x=0; x<count; x++){
+//						FrozenDiceArray.add({value: diceValue, image: diceImage});	
+//					}
+//					ActiveDiceArray.remove(diceValue);
+//					GameAction.setStatus('roll', true);
+//					GameAction.setStatus('takeWorm', true);
+//					GameAction.setStatus('freezeDice', false);
+//					if(FrozenDiceArray.frozenStatus.haveWorm){
+//						GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
+//					}
+//					PlayerNotification.setMessage('Please click "roll", or click the worm you would like to take.');
 //					GameState.save();
 //				}else{
-//					PlayerNotification.setMessage('You have bunked!  If possible, you lose your newest worm (leftmost) and the highest grill worm is out of the game.');
-//					GameAction.setStatus('roll', false);
-//					GameAction.setStatus('takeWorm', false);
-//					GameAction.setStatus('freezeDice', false);
-//					GameAction.setStatus('bunk', true);
-//					GameState.save();
+//					PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
 //				}
 //			}else if(GameAction.status.gameOver===false){
-//				PlayerNotification.setMessage('You have already rolled, please freeze a dice number group.');
+//				PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
 //			}
 //		};
-		
-		this.freezeDice = function(diceValue){
-			if(GameAction.status.freezeDice===true){
-				if(CheckValidDiceFreeze.validate(diceValue)){
-					ActiveDiceArray.removeHighlight();
-					diceImage = SetDiceImage.imagify(diceValue);
-					count = ActiveDiceFilter.count(diceValue);
-					for(var x=0; x<count; x++){
-						FrozenDiceArray.add({value: diceValue, image: diceImage});	
-					}
-					ActiveDiceArray.remove(diceValue);
-					GameAction.setStatus('roll', true);
-					GameAction.setStatus('takeWorm', true);
-					GameAction.setStatus('freezeDice', false);
-					if(FrozenDiceArray.frozenStatus.haveWorm){
-						GrillWormsArray.highlightWorms(FrozenDiceArray.frozenStatus.sum);
-					}
-					PlayerNotification.setMessage('Please click "roll", or click the worm you would like to take.');
-					GameState.save();
-				}else{
-					PlayerNotification.setMessage('You already froze that number! Please pick a different number.');
-				}
-			}else if(GameAction.status.gameOver===false){
-				PlayerNotification.setMessage('You need to take a worm or reroll the dice.');
-			}
-		};
 		
 		this.takeWorm = function(wormValue){				
 			if(GameAction.status.takeWorm===true){
@@ -127,23 +94,5 @@ angular.module('pickominoGame')
 			}
 		};			
 		
-//		this.bunkPenalty = function(){
-//			if(PlayerWormsArray.array[GameAction.status.activePlayer].length!==0){
-//				//return worm to grill
-//				wormValue = PlayerWormsArray.removeBunkWorm();
-//				//remove highest value worm from grill
-//				GrillWormsArray.addWorm(wormValue);
-//				GrillWormsArray.removeBunkWorm(wormValue);
-//			}
-//			//reset dice and start over
-//			RandomDice.resetDice();
-//			GameAction.setStatus('roll', true);
-//			GameAction.setStatus('takeWorm', false);
-//			GameAction.setStatus('freezeDice', false);
-//			GameAction.setStatus('bunk', false);
-//			GameAction.switchPlayer();
-//			PlayerNotification.setMessage('You can now reroll the dice.');
-//			GameState.save();
-//		};
 	}
 ]);	

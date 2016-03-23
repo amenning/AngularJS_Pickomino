@@ -8,7 +8,7 @@ angular.module('pickominoGame')
 	'PlayerNotification',
 	'PlayerWormsArray',
 	'$http',
-	function SaveGameStateFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, GameAction, PlayerNotification, PlayerWormsArray, $http){
+	function GameStateFactory(FrozenDiceArray, ActiveDiceArray, GrillWormsArray, GameAction, PlayerNotification, PlayerWormsArray, $http){
 	
 		var gameState = { 
 							gameID: null,

@@ -3,7 +3,7 @@
 		<span class = 'titles'>Active Dice</span>
 	</div>
 	<div class = 'activedice inset'>
-		<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="action.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
+		<div class = 'dice inset' ng-repeat="dice in activeDice.diceValues track by $index" ng-click="activeDice.freezeDice(dice.value)" ng-class="(dice.canFreeze) ? 'activeHighlight' : 'inactiveHighlight' ">
 			<img ng-src="{{dice.image}}" />
 		</div>
 	</div>

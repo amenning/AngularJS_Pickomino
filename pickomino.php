@@ -69,6 +69,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/get-worm-type.js"></script>
 	<script src="app/assets/js/services/active-dice-array.js"></script>
 	<script src="app/assets/js/services/frozen-dice-array.js"></script>
+	<script src="app/assets/js/services/freeze-dice-action.js"></script>
 	<script src="app/assets/js/services/grill-worms-array.js"></script>
 	<script src="app/assets/js/services/game-action.js"></script>
 	<script src="app/assets/js/services/player-notification.js"></script>
@@ -80,7 +81,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/random-dice.js"></script>
 	<script src="app/assets/js/services/roll-dice.js"></script>
 	<script src="app/assets/js/services/bunk-penalty.js"></script>
-	<script src="app/assets/js/services/save-game-state.js"></script>
+	<script src="app/assets/js/services/game-state.js"></script>
 	<script src="app/assets/js/services/set-player-number.js"></script>
 	
 	<!-- Controllers -->
