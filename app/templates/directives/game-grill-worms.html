@@ -2,7 +2,7 @@
 	<span class = 'titles'>Worms on the Grill</span>
 </div>	
 <div class = 'worms inset' ng-controller="GrillWormsController as grillWorms">
-	<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues" ng-click="action.takeWorm(worm.value)" ng-class="{ 'activeHighlight' : worm.canTake }">
+	<div class = 'worm inset' ng-repeat="worm in grillWorms.grillWormsValues" ng-click="grillWorms.takeWorm(worm.value)" ng-class="{ 'activeHighlight' : worm.canTake }">
 		<p>{{worm.value}}</p>
 		<img class="img-center" ng-src="{{worm.image}}" />
 	</div>

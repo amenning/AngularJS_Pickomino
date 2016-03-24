@@ -70,6 +70,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/services/active-dice-array.js"></script>
 	<script src="app/assets/js/services/frozen-dice-array.js"></script>
 	<script src="app/assets/js/services/freeze-dice-action.js"></script>
+	<script src="app/assets/js/services/take-worm-action.js"></script>
 	<script src="app/assets/js/services/grill-worms-array.js"></script>
 	<script src="app/assets/js/services/game-action.js"></script>
 	<script src="app/assets/js/services/player-notification.js"></script>
