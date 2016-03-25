@@ -8,7 +8,7 @@ angular.module('pickominoGame')
     'PlayerNotification',
     'RandomDice',
     'GameState',
-    function FreezeDiceActionFactory(GameAction, CheckValidWormTake, GrillWormsArray, PlayerWormsArray, PlayerNotification, RandomDice, GameState){
+    function TakeWormActionFactory(GameAction, CheckValidWormTake, GrillWormsArray, PlayerWormsArray, PlayerNotification, RandomDice, GameState){
 		return {
 			take: function(wormValue){				
 				if(GameAction.status.takeWorm===true){

@@ -8,8 +8,6 @@ angular.module('pickominoGame')
 	function(GameAction, GameState, $http, $scope){
 		this.gameStatus = GameAction.status;
 		$scope.message = '';
-		//$scope.name = '';
-		//var context = this;
 		this.formData = {};
 		
 		this.setUser = function(userID, firstname){

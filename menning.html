@@ -130,6 +130,9 @@
 	<script src="node_modules/jquery/dist/jquery.js"></script>
 	<script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-touch/angular-touch.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.js"></script>
+	<script src="node_modules/ui-bootstrap/ui-bootstrap-tpls-1.2.4.js"></script>
 	
 	<script src="app/app.module.js"></script>
 	
@@ -146,7 +149,9 @@
 	<script src="app/assets/js/directives/game-active-dice.js"></script>
 	<script src="app/assets/js/directives/game-frozen-dice.js"></script>
 	<script src="app/assets/js/directives/game-player-worms.js"></script>
+	<script src="app/assets/js/directives/tutorial-board.js"></script>
 	<script src="app/assets/js/directives/common-footer.js"></script>
+	<script src="app/assets/js/directives/tooltip.js"></script>
 	
 	<!-- Services -->
 	<script src="app/assets/js/services/set-dice-image.js"></script>
@@ -154,6 +159,9 @@
 	<script src="app/assets/js/services/get-worm-type.js"></script>
 	<script src="app/assets/js/services/active-dice-array.js"></script>
 	<script src="app/assets/js/services/frozen-dice-array.js"></script>
+	<script src="app/assets/js/services/freeze-dice-action.js"></script>
+	<script src="app/assets/js/services/take-worm-action.js"></script>
+	<script src="app/assets/js/services/steal-worm-action.js"></script>
 	<script src="app/assets/js/services/grill-worms-array.js"></script>
 	<script src="app/assets/js/services/game-action.js"></script>
 	<script src="app/assets/js/services/player-notification.js"></script>
@@ -163,13 +171,17 @@
 	<script src="app/assets/js/services/check-valid-worm-steal.js"></script>
 	<script src="app/assets/js/services/active-dice-filter.js"></script>
 	<script src="app/assets/js/services/random-dice.js"></script>
-	<script src="app/assets/js/services/save-game-state.js"></script>
+	<script src="app/assets/js/services/roll-dice.js"></script>
+	<script src="app/assets/js/services/bunk-penalty.js"></script>
+	<script src="app/assets/js/services/game-state.js"></script>
+	<script src="app/assets/js/services/set-player-number.js"></script>
 	
 	<!-- Controllers -->
 	<script src="app/assets/js/controllers/game-login-controller.js"></script>
 	<script src="app/assets/js/controllers/game-header-controller.js"></script>
 	<script src="app/assets/js/controllers/game-registration-controller.js"></script>
 	<script src="app/assets/js/controllers/game-setup-controller.js"></script>
+	<script src="app/assets/js/controllers/game-player-options-controller.js"></script>
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
 	<script src="app/assets/js/controllers/game-frozen-dice-controller.js"></script>
@@ -177,6 +189,7 @@
 	<script src="app/assets/js/controllers/game-player-one-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-two-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-action-controller.js"></script>
+	<script src="app/assets/js/controllers/tutorial-action-controller.js"></script>
 	<script>
 		$(function() {
 			$('.nav-tabs a').click(function (e) {
