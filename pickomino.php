@@ -98,7 +98,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/controllers/game-player-notification-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-one-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-two-worms-controller.js"></script>
-	<script src="app/assets/js/controllers/game-action-controller.js"></script>
+	<script src="app/assets/js/controllers/game-body-controller.js"></script>
 	<script src="app/assets/js/controllers/tutorial-action-controller.js"></script>
 	<script>
 		$(function() {
