@@ -1,10 +1,12 @@
 angular.module('pickominoGame')		
 	
 .controller("PlayerOptionsController", [
+	'GameAction',
 	'PlayerNumber',
 	'RollDice',
 	'BunkPenalty',
-	function(PlayerNumber, RollDice, BunkPenalty){
+	function(GameAction, PlayerNumber, RollDice, BunkPenalty){
+		this.gameStatus = GameAction.status;
 		
 		this.setPlayers = function(playerCount){
 			PlayerNumber.set(playerCount);
@@ -16,7 +18,7 @@ angular.module('pickominoGame')
 		
 		this.bunkPenalty = function(){
 			BunkPenalty.penalize();
-		}
+		};
 		
 	}
 ]);	
