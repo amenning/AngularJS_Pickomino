@@ -95,6 +95,7 @@ require 'app/assets/php/password.php';
 	<script src="app/assets/js/controllers/game-grill-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-active-dice-controller.js"></script>
 	<script src="app/assets/js/controllers/game-frozen-dice-controller.js"></script>
+	<script src="app/assets/js/controllers/game-player-worms-layout-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-one-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-player-two-worms-controller.js"></script>
 	<script src="app/assets/js/controllers/game-body-controller.js"></script>
