@@ -1,6 +1,7 @@
 angular.module('pickominoGame')
 
-.controller("PlayerOneWormsController", ['PlayerWormsArray', 'StealWormAction', function(PlayerWormsArray, StealWormAction){
+.controller("PlayerOneWormsController", ['GameAction', 'PlayerWormsArray', 'StealWormAction', function(GameAction, PlayerWormsArray, StealWormAction){
+	this.gameStatus = GameAction.status;
 	this.wormValues = PlayerWormsArray.array[0];
 	this.status = PlayerWormsArray.status[0];
 	
