@@ -15,6 +15,7 @@ if($query_run = mysqli_query($mySQLi_connection, $query)){
 	$rows = mysqli_num_rows($query_run);
 	if($rows>0){
 		$gameStateResult = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
+		$gameStateID = $gameStateResult[0]['id'];
 		$gameStatus = unserialize($gameStateResult[0]['gameStatus']);
 		$grillWorms = unserialize($gameStateResult[0]['grillWorms']);
 		$deadGrillWorms = unserialize($gameStateResult[0]['deadGrillWorms']);
