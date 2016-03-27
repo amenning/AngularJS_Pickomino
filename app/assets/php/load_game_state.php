@@ -3,28 +3,28 @@ require 'core.inc.php';
 require 'connect.inc.php';
 require 'password.php';
 
-$mySQL_game_state = 'game_state';
+$mySQLi_game_state = 'game_state';
 
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 $game_id = $request->gameID;
 
 
-$query = "SELECT * FROM `".$mySQL_game_state."` WHERE `gameID`='".$game_id."' ORDER BY `id` DESC";
-if($query_run = mysql_query($query)){
-	$rows = mysql_num_rows($query_run);
-	if($rows>0){			
-		$gameStateID = mysql_result($query_run, 0, 'id');
-		$gameStatus = unserialize(mysql_result($query_run, 0, 'gameStatus'));
-		$grillWorms = unserialize(mysql_result($query_run, 0, 'grillWorms'));
-		$deadGrillWorms = unserialize(mysql_result($query_run, 0, 'deadGrillWorms'));
-		$activeDice = unserialize(mysql_result($query_run, 0, 'activeDice'));
-		$frozenDice = unserialize(mysql_result($query_run, 0, 'frozenDice'));
-		$frozenDiceTotal = unserialize(mysql_result($query_run, 0, 'frozenDiceTotal'));
-		$gameStatus = unserialize(mysql_result($query_run, 0, 'gameStatus'));
-		$playerMessage = unserialize(mysql_result($query_run, 0, 'playerMessage'));
-		$playerWorms = unserialize(mysql_result($query_run, 0, 'playerWorms'));
-		$playerWormsTotals = unserialize(mysql_result($query_run, 0, 'playerWormsTotals'));
+$query = "SELECT * FROM `".$mySQLi_game_state."` WHERE `gameID`='".$game_id."' ORDER BY `id` DESC";
+if($query_run = mysqli_query($mySQLi_connection, $query)){
+	$rows = mysqli_num_rows($query_run);
+	if($rows>0){
+		$gameStateResult = mysqli_fetch_all($query_run, MYSQLI_ASSOC);
+		$gameStatus = unserialize($gameStateResult[0]['gameStatus']);
+		$grillWorms = unserialize($gameStateResult[0]['grillWorms']);
+		$deadGrillWorms = unserialize($gameStateResult[0]['deadGrillWorms']);
+		$activeDice = unserialize($gameStateResult[0]['activeDice']);
+		$frozenDice = unserialize($gameStateResult[0]['frozenDice']);
+		$frozenDiceTotal = unserialize($gameStateResult[0]['frozenDiceTotal']);
+		$gameStatus = unserialize($gameStateResult[0]['gameStatus']);
+		$playerMessage = unserialize($gameStateResult[0]['playerMessage']);
+		$playerWorms = unserialize($gameStateResult[0]['playerWorms']);
+		$playerWormsTotals = unserialize($gameStateResult[0]['playerWormsTotals']);
 		
 		echo $response = json_encode(array( 'gameStateID' => $gameStateID,
 											'gameStatus' => $gameStatus, 
