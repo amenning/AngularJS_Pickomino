@@ -15,14 +15,14 @@ require 'app/assets/php/password.php';
 </head>
 <body>
 	<?php
-		if(loggedin()){
-			$firstname = getuserfield('firstname');
-			$lastname = getuserfield('lastname');
-			$user_id = getuserfield('id');
-		}else{
-			$user_id = -1;	
-			$firstname = null;
-		}
+//		if(loggedin()){
+//			$firstname = getuserfield('firstname');
+//			$lastname = getuserfield('lastname');
+//			$user_id = getuserfield('id');
+//		}else{
+//			$user_id = -1;	
+//			$firstname = null;
+//		}
 	?>		
 	
 	<div ng-controller="LoginController as loginCtrl" ng-init="loginCtrl.setUser('<?php echo $user_id ?>', '<?php echo $firstname ?>')">

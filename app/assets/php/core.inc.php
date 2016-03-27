@@ -17,9 +17,9 @@ function loggedin(){
 
 function getuserfield($field){
 	require 'connect.inc.php';
-	$query = "SELECT `".$field."` FROM `".$mySQL_db_table."` WHERE `id`='".$_SESSION['user_id']."'";
-	if($query_run = mysql_query($query)){
-		if($query_result = mysql_result($query_run, 0, $field)){
+	$query = "SELECT `".$field."` FROM `".$mySQLi_db_table."` WHERE `id`='".$_SESSION['user_id']."'";
+	if($query_run = mysqli_query($mySQLi_connection, $query)){
+		if($query_result = mysqli_fetch_row($query_run)){
 			return $query_result;
 		}
 	}

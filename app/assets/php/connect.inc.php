@@ -1,11 +1,14 @@
 <?php
-$mySQL_host = 'localhost';
-$mySQL_user = 'root';
-$mySQL_pass = '';
-$mySQL_db = 'pickominotest';
-$mySQL_db_table = 'users';
+$mySQLi_host = 'localhost';
+$mySQLi_user = 'root';
+$mySQLi_pass = '';
+$mySQLi_db = 'pickominotest';
+$mySQLi_db_table = 'users';
 
-if(!@mysql_connect($mySQL_host,$mySQL_user,$mySQL_pass) || !@mysql_select_db($mySQL_db)){
-	die(mysql_error());
-}
+$mySQLi_connection = @mysqli_connect($mySQLi_host,$mySQLi_user,$mySQLi_pass);
+@mysqli_select_db($mySQLi_connection, $mySQLi_db);
+
+//if(!@($connection = mysqli_connect($mySQL_host,$mySQL_user,$mySQL_pass)) || !@mysqli_select_db($mySQL_db)){	
+	//die(mysqli_error($connection));
+//}
 ?>
