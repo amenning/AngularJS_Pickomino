@@ -32,7 +32,6 @@ angular.module('pickominoGame')
   				headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
  			})
   			.success(function(data) {
-				console.log(data);
 				if(data.success===true){
 					GameAction.setStatus('userID', data.userID);
 					GameAction.setStatus('gameLogin', false);
